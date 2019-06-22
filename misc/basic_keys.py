@@ -2,7 +2,7 @@ from talon.voice import Context, press, Key
 import string
 from ..utils import normalise_keys, insert
 
-alpha_alt = "air bat cap drum each fine gust harp sit jury crunch look made near odd pit quench red sun trap urge vest whale plex yank zip".split()
+alpha_alt = "air bat crunch dutch each fine gust harp sit jury kate look made near odd prime quill red sun trap urge vest whale plex yank zulu".split()
 alphabet = dict(zip(alpha_alt, string.ascii_lowercase))
 
 f_keys = {f"F {i}": f"f{i}" for i in range(1, 13)}
@@ -63,7 +63,7 @@ keys.update(symbols)
 digits = {str(i): str(i) for i in range(10)}
 
 # separate arrow dictionary for combining with modifiers
-arrows = {"left": "left", "right": "right", "up": "up", "down": "down"}
+arrows = {"lease": "left", "ross": "right", "sauce": "up", "dunce": "down"}
 
 # map alnum and keys separately so engine gives priority to letter/number repeats
 keymap = keys.copy()
