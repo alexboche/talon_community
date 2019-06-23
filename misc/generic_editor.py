@@ -186,25 +186,25 @@ def word_prev(m, valid_characters=alphanumeric):
 ctx.keymap(
     {
         # meta
-        "(save it | sage)": Key("cmd-s"),
-        "(undo it | dizzle)": Key("cmd-z"),
-        "(redo it | rizzle)": Key("cmd-shift-z"),
+        "(save)": Key("cmd-s"),
+        "(undo)": Key("cmd-z"),
+        "(redo)": Key("cmd-shift-z"),
         # clipboard
-        "(clip cut | snatch)": Key("cmd-x"),
-        "(clip copy | stoosh)": Key("cmd-c"),
-        "(clip paste | spark)": Key("cmd-v"),
+        "(cut)": Key("cmd-x"),
+        "(stoosh)": Key("cmd-c"),
+        "(spark)": Key("cmd-v"),
         # motions
-        "(go word left | fame | peg)": Key("alt-left"),
-        "(go word right | fish | fran)": Key("alt-right"),
-        "(go line after end | derek)": Key("cmd-right space"),
-        "(go line start | lefty)": Key("cmd-left"),
-        "(go line end | ricky)": Key("cmd-right"),
-        "(go line before end | smear)": Key("cmd-right left"),
+        "(go word left | bird)": Key("alt-left"),
+        "(go word right | fird)": Key("alt-right"), 
+        "(go line after end | Derek)": Key("cmd-right space"),
+        "(go line start)": Key("cmd-left"),
+        "(go line end)": Key("cmd-right"),
+        "(go line before end | samear)": Key("cmd-right left"),
         # insertions
         "([insert] line break | sky turn)": Key("shift-enter"),
-        "([insert] new line below | slap)": Key("cmd-right enter"),
+        "([insert] new line below | slapper)": Key("cmd-right enter"),
         "([insert] new line above | shocker)": Key("ctrl-a cmd-left enter up"),
-        "([insert] duplicate line | jolt)": Key(
+        "([insert] duplicate line | duple)": Key(
             "ctrl-a cmd-left shift-down cmd-c down cmd-v"
         ),
         # deleting
@@ -212,8 +212,8 @@ ctx.keymap(
         "(delete line left | snip left | snipple)": Key("shift-cmd-left delete"),
         "(delete line right | snip right | snipper)": Key("shift-cmd-right delete"),
         "(delete [this] line)": Key("shift-cmd-right delete delete ctrl-a cmd-left"),
-        "(delete word left | trough | steffi | carmex)": Key("alt-backspace"),
-        "(delete word right | stippy | kite)": Key("alt-delete"),
+        "(delete word left | splat)": Key("alt-backspace"),
+        "(delete word right | sprat)": Key("alt-delete"),
         "(delete [this] word | slurpies)": Key("alt-backspace alt-delete"),
         # selecting
         "(select find right | crew) <dgndictation>": select_text_to_right_of_cursor,
@@ -223,7 +223,7 @@ ctx.keymap(
         "(select above | shift home)": Key("shift-home"),
         "(select up | shreep)": Key("shift-up"),
         "(select down | shroom)": Key("shift-down"),
-        "(select all | olly | ali)": Key("cmd-a"),
+        "(select all | olly)": Key("cmd-a"),
         "(select left | shrim | shlicky)": Key("shift-left"),
         "(select right | shrish | shricky)": Key("shift-right"),
         "(select word number {generic_editor.n}* above | wordpreev {generic_editor.n}*)": word_prev,
