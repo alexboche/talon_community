@@ -2,7 +2,7 @@ from talon.voice import Context, press, Key
 import string
 from ..utils import normalise_keys, insert
 
-alpha_alt = "air bat crunch dutch each fail gust harp sit jury kate look made near odd prime quill red sun trap urge vest whale plex yank zulu".split()
+alpha_alt = "air bat crunch dutch each fail gust hish sit jury kate look made near odd prime quill rat sun trap urge vest whale plex yank zulu".split()
 alphabet = dict(zip(alpha_alt, string.ascii_lowercase))
 
 f_keys = {f"F {i}": f"f{i}" for i in range(1, 13)}
@@ -15,7 +15,7 @@ simple_keys = normalise_keys(
         "(dunce)": "down",
         "(backspace | clear)": "backspace",
         "deli": "delete",
-        "(ace)": "space",
+        "(ace | space)": "space",
         "(tabby)": "tab",
         "( enter | shock )": "enter",
         "( escape | cancel )": "escape",
@@ -124,7 +124,7 @@ ctx.keymap(
     {
         "(uppercase | ship | sky) {basic_keys.alphabet}+ [(lowercase | sunk)]": uppercase_letters,
         "{basic_keys.modifiers}* {basic_keys.alphabet}+": press_keys,
-        "{basic_keys.modifiers}* {basic_keys.digits}+": press_keys,
+        "({basic_keys.modifiers}+ | num) {basic_keys.digits}+": press_keys,
         "{basic_keys.modifiers}* {basic_keys.keys}+": press_keys,
         "(go | {basic_keys.modifiers}+) {basic_keys.arrows}+": press_keys,
         "number {basic_keys.digits}+ [over]": press_keys,
