@@ -80,9 +80,9 @@ context.keymap(
         "master": Key("cmd-p"),
         # tabbing
         "stiffy": Key("cmd-alt-left"),
-        "next tab": Key("cmd-alt-right"),
+        "(next tab | nexta)": Key("cmd-alt-right"),
         "stippy": Key("cmd-alt-right"),
-        "last tab": Key("cmd-alt-left"),
+        "(prexta | prior tab | last tab)": Key("cmd-alt-left"),
         "new tab": Key("cmd-n"),
         "jump" + optional_numerals: jump_tabs,
         # Menu
@@ -91,7 +91,7 @@ context.keymap(
         # editing
         "bracken": [Key("cmd-shift-ctrl-right")],
         # various
-        "comment": Key("cmd-shift-7"),
+        "comment": Key("cmd-/"),
         "search all": Key("cmd-shift-f"),
         "(drop-down | drop)": Key("ctrl-space"),
     }
