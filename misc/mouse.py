@@ -97,7 +97,7 @@ keymap = {
     # jsc modified with some voice-code compatibility
     # why delayed? 
     "rick": delayed_right_click,
-    "(click | chiff | mick)": delayed_click,
+    "(click | chiff | mick | shsh)": delayed_click,
     "(dubclick | dick)": delayed_dubclick,
     "(tripclick | triplick)": delayed_tripclick,
     "squat": mouse_drag,
@@ -108,6 +108,7 @@ keymap = {
     "wheel down": mouse_scroll(200),
     "wheel up": mouse_scroll(-200),
     "mouse center": mouse_center,
+    
 }
 
 ctx.keymap(keymap)
