@@ -26,6 +26,7 @@ keymap = {
     "(and sign | ampersand | amper)": "&",
     "(piper)": "|",
     "piping": " | ",
+    "boom": ", ",
     "(doter)": '"',
     "long equals": " = ",
     "long minus": " - ",

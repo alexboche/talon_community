@@ -112,7 +112,7 @@ def go_to_webpage(m):
 context.keymap(
     {
         "(address bar | focus address | focus url | url | quick bar)": focus_address_bar,
-        "test daniel": "cmd-l d",
+        "test daniel": Key("cmd-l d"),
         "copy url": Key("escape y y"),
         "go back": back,
         "go forward": forward,

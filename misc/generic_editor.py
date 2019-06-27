@@ -234,5 +234,9 @@ ctx.keymap(
         "(select word right | scrish)": Key("alt-shift-right"),
         "(select line left | lecksy)": Key("cmd-shift-left"),
         "(select line right | ricksy)": Key("cmd-shift-right"),
+        # "dev key": Key("left"),
+        # "dynasty": [Key("left", Key("a")],
+        "dynasty": ["hello", "what", Key('a')],
+        
     }
 )
