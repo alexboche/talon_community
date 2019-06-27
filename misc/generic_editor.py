@@ -13,10 +13,16 @@ from ..utils import (
     extract_num_from_m,
 )
 
+punctuation = {"period": ".", "comma": ",", "com": ",", "deck": ":", "deckle": ":", "semper": ";"}
+
 ctx = Context("generic_editor", func=is_not_vim)
 ctx.set_list("n", numeral_list)
-ctx.set_list("punct", symbol.keymap)
+ctx.set_list("punct", punctuation)
+# ctx.set_list("punct", symbol.keymap)
 
+def tell_key(m):
+    p = punctuation[m['generic_editor.punct'][0]]
+    Key(p)(None)
 
 def find_next(m):
     press("cmd-f")
@@ -239,7 +245,8 @@ ctx.keymap(
         # "dev key": Key("left"),
         # "dynasty": [Key("left", Key("a")],
         "dynasty": ["hello", "what", [Key('a')]*2],
-        "tell {generic_editor.punct}": [Key("end"), "{generic_editor.punct}", Key('enter')],
+        "tell {generic_editor.punct}": [Key('cmd-right'), tell_key, Key('enter')] 
+        
 
         
         

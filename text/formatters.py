@@ -33,7 +33,7 @@ formatters = normalise_keys(
             lambda i, word, _: word if i == 0 else word.capitalize(),
         ),
         "pathway": (True, lambda i, word, _: word if i == 0 else "/" + word),
-        "dotsway": (True, lambda i, word, _: word if i == 0 else "." + word),
+        "pebble": (True, lambda i, word, _: word if i == 0 else "." + word),
         "yellsmash": (True, lambda i, word, _: word.upper()),
         "(allcaps | yeller)": (False, lambda i, word, _: word.upper()),
         "yellsnik": (
