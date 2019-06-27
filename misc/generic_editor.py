@@ -3,6 +3,7 @@
 import time
 
 import talon.clip as clip
+from ..text import symbol 
 from talon.voice import Key, press, Str, Context
 from ..utils import (
     parse_words,
@@ -14,6 +15,7 @@ from ..utils import (
 
 ctx = Context("generic_editor", func=is_not_vim)
 ctx.set_list("n", numeral_list)
+ctx.set_list("punct", symbol.keymap)
 
 
 def find_next(m):
@@ -194,7 +196,7 @@ ctx.keymap(
         "(stoosh)": Key("cmd-c"),
         "(spark)": Key("cmd-v"),
         # motions
-        "(go word left | bird)": Key("alt-left"),
+        "(go word left | bird  | lird)": Key("alt-left"),
         "(go word right | fird)": Key("alt-right"), 
         "(go line after end | Derek)": Key("cmd-right space"),
         "(go line start)": Key("cmd-left"),
@@ -236,7 +238,11 @@ ctx.keymap(
         "(select line right | ricksy)": Key("cmd-shift-right"),
         # "dev key": Key("left"),
         # "dynasty": [Key("left", Key("a")],
-        "dynasty": ["hello", "what", Key('a')],
+        "dynasty": ["hello", "what", [Key('a')]*2],
+        "tell {generic_editor.punct}": [Key("end"), "{generic_editor.punct}", Key('enter')],
+
+        
+        
         
     }
 )
