@@ -100,8 +100,8 @@ keymap = {
     "(click | chiff | mick)": delayed_click,
     "(dubclick | dick)": delayed_dubclick,
     "(tripclick | triplick)": delayed_tripclick,
-    "drag": mouse_drag,
-    "release": mouse_release,
+    "squat": mouse_drag,
+    "bench": mouse_release,
     # jsc added
     "(shift click | shicks)": shift_click,
     "(command click | chom lick)": command_click,

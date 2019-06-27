@@ -36,7 +36,7 @@ ctx.keymap(
         "show app windows": Key("ctrl-down"),
         # application navigation
         "[open] launcher": Key("cmd-space"),
-        "([switch] app (next | right) | swick)": Key("cmd-tab"),
+        "([switch] app (next | right) | dredge)": Key("cmd-tab"),
         "[switch] app (left | previous | preev)": Key("cmd-shift-tab"),
         "[open] mission control": lambda m: system("open -a 'Mission Control'"),
     }

@@ -82,7 +82,7 @@ context.keymap(
         "stiffy": Key("cmd-alt-left"),
         "(next tab | nexta)": Key("cmd-alt-right"),
         "stippy": Key("cmd-alt-right"),
-        "(prexta | prior tab | last tab)": Key("cmd-alt-left"),
+        "(prexta | prior tab | untab)": Key("cmd-alt-left"),
         "new tab": Key("cmd-n"),
         "jump" + optional_numerals: jump_tabs,
         # Menu

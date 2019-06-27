@@ -111,14 +111,15 @@ def go_to_webpage(m):
 
 context.keymap(
     {
-        "(address bar | focus address | focus url | url)": focus_address_bar,
+        "(address bar | focus address | focus url | url | quick bar)": focus_address_bar,
+        "test daniel": "cmd-l d",
         "copy url": Key("escape y y"),
         "go back": back,
         "go forward": forward,
         "page reload": Key("cmd-r"),
         "reload page": Key("cmd-r"),
         "hard reload": Key("cmd-shift-r"),
-        "new tab": Key("cmd-t"),
+        "new [tab]": Key("cmd-t"),
         "new tab {global_browser.webpages}": go_to_webpage,
         "close tab": Key("cmd-w"),
         "(reopen | unclose) tab": Key("cmd-shift-t"),
