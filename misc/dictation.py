@@ -54,4 +54,8 @@ class AutoFormat:
 
 
 auto_format = AutoFormat()
-dictation.keymap({"<dgndictation>": auto_format.phrase, "press enter": Key("enter")})
+dictation.keymap({
+    "<dgndictation>": auto_format.phrase,
+    "press enter": Key("enter"),
+    "word <dgnwords>": lambda m: auto_format.insert_word(m.dgnwords[0][0])
+})

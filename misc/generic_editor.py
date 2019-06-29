@@ -208,6 +208,8 @@ ctx.keymap(
         "(go line start)": Key("cmd-left"),
         "(go line end)": Key("cmd-right"),
         "(go line before end | samear)": Key("cmd-right left"),
+        "toppy": Key("cmd-home"),
+
         # insertions
         "([insert] line break | sky turn)": Key("shift-enter"),
         "([insert] new line below | slapper)": Key("cmd-right enter"),

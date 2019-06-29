@@ -108,6 +108,14 @@ def go_to_webpage(m):
     press("cmd-t")
     navigate_to_url(get_webpage(m))
 
+WORDS =  {'old': 'elderly', 'young': 'YANG'}
+context.set_list('person', WORDS.keys())
+
+
+
+def insert(s):
+    return Str(str(s))(None)
+
 
 context.keymap(
     {
@@ -160,7 +168,9 @@ context.keymap(
         # "move tab left": Key("ctrl-shift-left"),
         # "move tab right": Key("ctrl-shift-right"),
         # "move tab left way": Key("ctrl-shift-down"),
+       "person {GoogleChrome.person}": lambda m: insert(WORDS[m['GoogleChrome.person'][0]]),
         # vimium
+        
         "link": link,
         "move tab left": browser.send_to_vimium("<<"),
         "move tab right": browser.send_to_vimium(">>"),
