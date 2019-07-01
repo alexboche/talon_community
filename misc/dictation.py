@@ -57,5 +57,6 @@ auto_format = AutoFormat()
 dictation.keymap({
     "<dgndictation>": auto_format.phrase,
     "press enter": Key("enter"),
+    "fly lease": Key('left'),
     "word <dgnwords>": lambda m: auto_format.insert_word(m.dgnwords[0][0])
 })
