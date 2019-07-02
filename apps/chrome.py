@@ -110,12 +110,21 @@ def go_to_webpage(m):
 
 WORDS =  {'old': 'elderly', 'young': 'YANG'}
 context.set_list('person', WORDS.keys())
-
+context.set_list("n", utils.numeral_list)
 
 
 def insert(s):
     return Str(str(s))(None)
 
+def insert_number(m):
+    number = utils.parse_words_as_integer(m._words[1:])
+
+    if number is None:
+        return
+
+    # press("cmd-g")
+    Str(str(number))(None)
+    # press("enter")
 
 context.keymap(
     {
@@ -168,7 +177,9 @@ context.keymap(
         # "move tab left": Key("ctrl-shift-left"),
         # "move tab right": Key("ctrl-shift-right"),
         # "move tab left way": Key("ctrl-shift-down"),
-       "person {GoogleChrome.person}": lambda m: insert(WORDS[m['GoogleChrome.person'][0]]),
+    #    "person {GoogleChrome.person}": lambda m: insert(WORDS[m['GoogleChrome.person'][0]]),
+        "person {GoogleChrome.person}": [Key('cmd-t'), lambda m: insert(WORDS[m['GoogleChrome.person'][0]])],
+        "voice" + utils.optional_numerals: [insert_number ],
         # vimium
         
         "link": link,
