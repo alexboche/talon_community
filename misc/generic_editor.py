@@ -15,14 +15,21 @@ from ..utils import (
 
 punctuation = {"period": ".", "comma": ",", "com": ",", "deck": ":", "deckle": ":", "semper": ";"}
 
+# numbers = {str(i): i for i in range(1, 101)} 
+
 ctx = Context("generic_editor", func=is_not_vim)
 ctx.set_list("n", numeral_list)
 ctx.set_list("punct", punctuation)
 # ctx.set_list("punct", symbol.keymap)
 
+# def clipper(m):
+
+
 def tell_key(m):
     p = punctuation[m['generic_editor.punct'][0]]
     Key(p)(None)
+
+
 
 def find_next(m):
     press("cmd-f")
@@ -247,8 +254,10 @@ ctx.keymap(
         # "dev key": Key("left"),
         # "dynasty": [Key("left", Key("a")],
         "dynasty": ["hello", "what", [Key('a')]*2],
-        "tell {generic_editor.punct}": [Key('cmd-right'), tell_key, Key('enter')] 
+        "tell {generic_editor.punct}": [Key('cmd-right'), tell_key, Key('enter')],
         
+        "copy all": [Key('cmd-a'), Key('cmd-c')],
+        "cut all": [Key('cmd-a'), Key('cmd-x')],
 
         
         
