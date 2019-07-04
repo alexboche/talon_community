@@ -115,6 +115,7 @@ ctx = Context("formatters")
 ctx.keymap(
     {
         "(phrase | say) <dgndictation> [over]": text,
+        "(spay) <dgndictation> [over]": [" ", text],
         "sentence <dgndictation> [over]": sentence_text,
         "(comma | ,) <dgndictation> [over]": [", ", spoken_text],
         "period <dgndictation> [over]": [". ", sentence_text],

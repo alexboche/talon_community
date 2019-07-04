@@ -1,4 +1,8 @@
-from talon.voice import Context, ContextGroup
+from talon.voice import Key, press, Str, Context, ContextGroup
+from talon.voice import Context, Rep, RepPhrase, talon
+from .. import utils
+
+
 from talon.engine import engine
 from talon_plugins import speech
 
@@ -9,6 +13,45 @@ dictation_group = ContextGroup("dictation")
 dictation = Context("dictation", group=dictation_group)
 dictation_group.load()
 dictation_group.disable()
+
+# def repeat(m):
+#     # TODO: This could be made more intelligent:
+#     #         * Apply a timeout after which the command will not repeat previous actions
+#     #         * Prevent stacking of repetitions upon previous repetitions
+#     repeat_count = utils.extract_num_from_m(m)
+
+#     if repeat_count is not None and repeat_count >= 2:
+#         repeater = Rep(repeat_count - 1)
+#         repeater.ctx = talon
+#         return repeater(None)
+
+
+ordinals = {}
+
+def ordinal(n):
+    """
+    Convert an integer into its ordinal representation::
+        ordinal(0)   => '0th'
+        ordinal(3)   => '3rd'
+        ordinal(122) => '122nd'
+        ordinal(213) => '213th'
+    """
+    n = int(n)
+    suffix = ["th", "st", "nd", "rd", "th"][min(n % 10, 4)]
+    if 11 <= (n % 100) <= 13:
+        suffix = "th"
+    return str(n) + suffix
+    # return str(n)
+
+for n in range(2, 100):
+    ordinals[ordinal(n)] = n - 1
+
+def repeat(m):
+    o = m["repeater.ordinals"][0]
+    repeater = Rep(int(ordinals[o]))
+    repeater.ctx = talon
+    return repeater(None)
+
 
 
 class VoiceType:
@@ -57,6 +100,11 @@ sleepy.keymap(
         "dragon mode": lambda m: set_voice_type(VoiceType.DRAGON),
         "dictation mode": lambda m: set_voice_type(VoiceType.DICTATION),
         "talon mode": lambda m: set_voice_type(VoiceType.TALON),
+        "clear": Key('backspace'),
+        'space': Key('space'),
+        "triumph": Key('backspace'),
+        # "(repeat | repple)" + utils.numerals: repeat,
+        "{repeater.ordinals}": repeat
     }
 )
 sleep_group.load()
