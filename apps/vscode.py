@@ -68,8 +68,7 @@ context.keymap(
         # Navigation
         "line" + optional_numerals: jump_to_line,
         "Go to line": Key("cmd-g"),
-        "line up" + optional_numerals: repeat_function(2, "alt-up"),
-        "line down" + optional_numerals: repeat_function(2, "alt-down"),
+        
         # Navigating Interface
         "explore tab": Key("shift-cmd-e"),
         "search tab": Key("shift-cmd-f"),
@@ -94,5 +93,28 @@ context.keymap(
         "comment": Key("cmd-/"),
         "search all": Key("cmd-shift-f"),
         "(drop-down | drop)": Key("ctrl-space"),
+        "command pallet":Key('cmd-shift-p'),
+        "settings": Key('cmd-,'),
+
+        # basic editing
+        "[switch] line up" + optional_numerals: repeat_function(2, "alt-up"),
+        "[switch] line down" + optional_numerals: repeat_function(2, "alt-down"),
+        "copy [line] down": Key('shift-alt-down'),
+        "copy [line] up": Key('shift-alt-up'),
+        "delete line": Key('ctrl-shift-k'),
+        "line below": Key('cmd-enter'),
+        "line above": Key('cmd-shift-enter'),  
+        "indent": [Key('cmd-left'), Key('tab')],
+        "outdent": [Key('cmd-left'), Key('shift-tab')],
+        "match (bracket | pair)": Key('cmd-shift-\\'),
+        # "scroller down": Key('ctrl-pageup'),
+        # "scroller up": Key('ctrl-pagedown'),
+        # "scroller page up": Key-('cmd-pageup'),
+        # "scroller page down": Key-('cmd-pagedown'),
+        
+        "toggle word wrap": Key('alt-z'), 
+
+
+
     }
 )
