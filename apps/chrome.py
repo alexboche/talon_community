@@ -121,7 +121,7 @@ def insert_number(m):
 
     if number is None:
         return
-
+    time.sleep(0.3)
     # press("cmd-g")
     Str(str(number))(None)
     # press("enter")
@@ -179,7 +179,10 @@ context.keymap(
         # "move tab left way": Key("ctrl-shift-down"),
     #    "person {GoogleChrome.person}": lambda m: insert(WORDS[m['GoogleChrome.person'][0]]),
         "person {GoogleChrome.person}": [Key('cmd-t'), lambda m: insert(WORDS[m['GoogleChrome.person'][0]])],
-        "voice" + utils.optional_numerals: [insert_number ],
+        # "voice" + utils.optional_numerals: [Key('cmd-l'), time.sleep(0.2), insert_number],
+        # "voice" + utils.optional_numerals: [Key('cmd-l'), insert_number],
+        "voice" + utils.optional_numerals: [Key('cmd-shift-space'), insert_number, Key('enter')],
+
         # vimium
         
         "link": link,
