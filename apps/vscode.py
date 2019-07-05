@@ -1,3 +1,4 @@
+import time
 from talon.voice import Context, Key, press, Str
 from ..utils import parse_words_as_integer, repeat_function, optional_numerals, text
 
@@ -14,7 +15,8 @@ def jump_to_line(m):
     if line_number == 0:
         line_number = 1
 
-    press("cmd-g")
+    press("ctrl-g")
+    time.sleep(0.2)
     Str(str(line_number))(None)
     press("enter")
 
@@ -66,7 +68,7 @@ context.keymap(
         # Clipboard
         "clone": Key("alt-shift-down"),
         # Navigation
-        "line" + optional_numerals: jump_to_line,
+        "liner" + optional_numerals: jump_to_line,
         "Go to line": Key("cmd-g"),
         
         # Navigating Interface
