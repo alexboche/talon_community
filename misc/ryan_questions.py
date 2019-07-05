@@ -7,7 +7,7 @@ from talon import ctrl, clip, resource, ui
 from talon.app import notify
 
 
-
+numbers = {str(i): i for i in range(1, 101)}
 # helper functions that will go away with newapi
 def insert(s):
     Str(s)(None)
@@ -74,8 +74,14 @@ def save_goto(m):
 # end save/goto
 def insert(s):
     return Str(str(s))(None)
+    
+def add(a, b, c, d):
+    insert(a + b + c + d)
+
 ctx = Context('geodude')
 ctx.keymap({
+    'addition {geodude.a} {geodude.b}': lambda m: add(numbers[m.a[0]], numbers[m.b[0]], 5, 6),
+      
     'copy mouse command': copy_mouse_command,
     'tell {geodude.map}': [Key('cmd-right'), tell_key, Key('enter')],
     'go to [bookmark] {geodude.goto}': run_goto,
@@ -87,4 +93,5 @@ ctx.keymap({
 })
 ctx.set_list('map', punctuation)
 ctx.set_list('goto', goto)
-
+ctx.set_list('a', numbers)
+ctx.set_list('b', numbers)
