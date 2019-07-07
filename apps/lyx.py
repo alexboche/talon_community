@@ -1,9 +1,11 @@
-from talon.voice import Key, Context
+# import toml
+from talon.voice import Key, Context, Str
 
 ctx = Context("lyx", bundle="org.lyx.lyx")
 
 
-
+def insert(s):
+    return Str(str(s))(None)
 
 # formatting for latex symbols without curly braces and all Lyx codes
 def format_without_braces(vocab_dict):
@@ -24,30 +26,32 @@ def cap_symbol_letters(big, symbol):
     return symbol
   
 # load the toml file
-with io.open("C:\NatLink\NatLink\MacroSystem\castervoice\lib\ccr\lyx\math_vocab.toml") as f:
-        math_vocab = toml.load(f)
+# with open("/Users/alex/.talon/user/talon_community/apps/lyx_alex.toml") as f:
+#         math_vocab = toml.load(f)
 
 # generate math vocabulary for symbols not requiring braces in latex
-non_braces_math_vocab = {}
-for category in math_vocab["non_braces"]:
-    for spec in math_vocab["non_braces"][category]:
-        non_braces_math_vocab[spec] = math_vocab["non_braces"][category][spec]
+# non_braces_math_vocab = {}
+# for category in math_vocab["non_braces"]:
+#     for spec in math_vocab["non_braces"][category]:
+#         non_braces_math_vocab[spec] = math_vocab["non_braces"][category][spec]
 
-# generate math vocabulary for symbols requiring braces in latex
-braces_math_vocab = {}
-for category in math_vocab["braces"]:
-    for spec in math_vocab["braces"][category]:
-        braces_math_vocab[spec] = math_vocab["braces"][category][spec]
+# # generate math vocabulary for symbols requiring braces in latex
+# braces_math_vocab = {}
+# for category in math_vocab["braces"]:
+#     for spec in math_vocab["braces"][category]:
+#         braces_math_vocab[spec] = math_vocab["braces"][category][spec]
 
-# generate full Lyx math vocabulary
-full_lyx_math_vocab = non_braces_math_vocab.copy()
-for spec in braces_math_vocab:
-    full_lyx_math_vocab[spec] = braces_math_vocab[spec]
+# # generate full Lyx math vocabulary
+# full_lyx_math_vocab = non_braces_math_vocab.copy()
+# for spec in braces_math_vocab:
+#     full_lyx_math_vocab[spec] = braces_math_vocab[spec]
 
+# print(math_vocab)
+# print(full_lyx_math_vocab)
 
 keymap = {
 
-
+# ctx.set_list('full_lyx_math_vocab')
 
 
 # Non- math things
