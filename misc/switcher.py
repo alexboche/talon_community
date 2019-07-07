@@ -58,7 +58,7 @@ ctx.keymap(
     }
 )
 
-hardcoded_application_names = {"term": "iTerm2", "code": "code", "ack": "Acrobat Reader"}
+hardcoded_application_names = {"term": "iTerm2", "code": "code", "ack": "Acrobat Reader", "Lyx", "Lyx"}
 
 
 def update_lists():
