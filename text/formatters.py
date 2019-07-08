@@ -53,7 +53,7 @@ formatters = normalise_keys(
         "tridal": (False, lambda i, word, _: word.capitalize()),
         "snake": (True, lambda i, word, _: word if i == 0 else "_" + word),
         "dotsnik": (True, lambda i, word, _: "." + word if i == 0 else "_" + word),
-        "smash": (True, lambda i, word, _: word),
+        # "smash": (True, lambda i, word, _: word),
         "(spine | kebab)": (True, lambda i, word, _: word if i == 0 else "-" + word),
         "title": (False, title_case_capitalize_word),
     }
@@ -116,7 +116,7 @@ ctx.keymap(
     {
         "(phrase | say) <dgndictation> [over]": text,
         "(spay) <dgndictation> [over]": [" ", text],
-        "sentence <dgndictation> [over]": sentence_text,
+        "(sentence | salor) <dgndictation> [over]": sentence_text,
         "(comma | ,) <dgndictation> [over]": [", ", spoken_text],
         "period <dgndictation> [over]": [". ", sentence_text],
         # "pounce <dgndictation>" : [text, Key('enter')],

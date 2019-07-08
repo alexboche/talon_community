@@ -139,6 +139,31 @@ context.keymap(
         "expand": Key('cmd-ctrl-shift-right'),
         "shrink": Key('cmd-ctrl-shift-left'),
 
+        # Search and replace
+        "replace": Key('alt-cmd-f'),
+        "next match": Key('cmd-g'),
+        "previous match": Key('cmd-shift-g'),
+        "select all matches": Key('alt-enter'),
+        "add selection to next [find] match": Key('cmd-d'),
+        "move last selection to next [find] match": Key('cmd-k cmd-d'),
+
+        # Rich languages editing
+        "[trigger] suggestion": Key('ctrl-space'),
+        "[trigger] parameter [hints]": Key('cmd-shift-space'),
+        "format document": Key('shift-alt-f'),
+        "format selection": Key('cmd-k cmd-f'),
+        "(definition | deffy)": Key('f12'),
+        "peak (def | definition)": Key('alt-f12'),
+        "definition [to the] side": Key('cmd-k f12'),
+        "quick fix": Key('cmd-.'),
+        "show references": Key('shift-f12'),
+        "rename symbol": Key('f2'),
+        "trim [trailing] white": Key('cmd-k cmd-x'),
+        "change file language": Key('cmd-k cmd-m'),
+
+    
+
+
 
 
 
