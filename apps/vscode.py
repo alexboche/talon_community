@@ -126,10 +126,25 @@ context.keymap(
         # "insert cursor": Key('alt-click'), don't know how to make this
         "cursor above": Key('cmd-alt-up'),
         "cursor below": Key('cmd-alt-down'),
+        "cursor up": Key('cmd-shift-alt-up'), # other multi cursor commands
+        "cursor down": Key('cmd-shift-alt-down'), 
+        "cursor left": Key('cmd-shift-alt-left'), 
+        "cursor right": Key('cmd-shift-alt-left'), 
+        "cursor far up": Key('cmd-shift-alt-pageup'),
+        "cursor far down": Key('cmd-shift-alt-pageup'),
         "[undo] last cursor [operation]": Key('cmd-u'),
         "(cursor selected | insert cursor at end of each line selected)":Key('shift-alt-i'),
         "(current selection | select all occurrences of current selection)": Key('shift-cmd-l'),
-        
+        "(current word | select all occurrences of current word)": Key('cmd-f2'),
+        "expand": Key('cmd-ctrl-shift-right'),
+        "shrink": Key('cmd-ctrl-shift-left'),
+
+
+
+
+
+
+
 
 
 
