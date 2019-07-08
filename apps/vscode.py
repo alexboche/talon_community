@@ -109,12 +109,27 @@ context.keymap(
         "indent": [Key('cmd-left'), Key('tab')],
         "outdent": [Key('cmd-left'), Key('shift-tab')],
         "match (bracket | pair)": Key('cmd-shift-\\'),
+        # "scroller page down": Key-('cmd-pagedown'),
         # "scroller down": Key('ctrl-pageup'),
         # "scroller up": Key('ctrl-pagedown'),
         # "scroller page up": Key-('cmd-pageup'),
-        # "scroller page down": Key-('cmd-pagedown'),
-        
+        "fold region": Key('cmd-alt-['),
+        "unfold region": Key('cmd-alt-]'),
+        "fold all subregions": Key('cmd-k cmd-['),
+        "unfold all subregions": Key('cmd-k cmd-]'),
+        "fold all regions": Key('cmd-k cmd-0'),
+        "unfold all regions": Key('cmd-k cmd-j'), 
+        "toggle block comment": Key('shift-alt-a'),
         "toggle word wrap": Key('alt-z'), 
+
+        # Multi cursor and selection
+        # "insert cursor": Key('alt-click'), don't know how to make this
+        "cursor above": Key('cmd-alt-up'),
+        "cursor below": Key('cmd-alt-down'),
+        "[undo] last cursor [operation]": Key('cmd-u'),
+        "(cursor selected | insert cursor at end of each line selected)":Key('shift-alt-i'),
+        "(current selection | select all occurrences of current selection)": Key('shift-cmd-l'),
+        
 
 
 

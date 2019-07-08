@@ -1,4 +1,4 @@
-# import toml
+import toml
 from talon.voice import Key, Context, Str
 
 ctx = Context("lyx", bundle="org.lyx.lyx")
@@ -25,34 +25,57 @@ def cap_symbol_letters(big, symbol):
         symbol = symbol.title()
     return symbol
   
-# load the toml file
-# with open("/Users/alex/.talon/user/talon_community/apps/lyx_alex.toml") as f:
-#         math_vocab = toml.load(f)
+# const load the toml file
+with open("/Users/alex/.talon/user/talon_community/apps/lyx_alex.toml") as f:
+        math_vocab = toml.load(f)
 
 # generate math vocabulary for symbols not requiring braces in latex
-# non_braces_math_vocab = {}
-# for category in math_vocab["non_braces"]:
-#     for spec in math_vocab["non_braces"][category]:
-#         non_braces_math_vocab[spec] = math_vocab["non_braces"][category][spec]
+non_braces_math_vocab = {}
+for category in math_vocab["non_braces"]:
+    for spec in math_vocab["non_braces"][category]:
+        non_braces_math_vocab[spec] = math_vocab["non_braces"][category][spec]
 
-# # generate math vocabulary for symbols requiring braces in latex
-# braces_math_vocab = {}
-# for category in math_vocab["braces"]:
-#     for spec in math_vocab["braces"][category]:
-#         braces_math_vocab[spec] = math_vocab["braces"][category][spec]
+# generate math vocabulary for symbols requiring braces in latex
+braces_math_vocab = {}
+for category in math_vocab["braces"]:
+    for spec in math_vocab["braces"][category]:
+        braces_math_vocab[spec] = math_vocab["braces"][category][spec]
 
-# # generate full Lyx math vocabulary
-# full_lyx_math_vocab = non_braces_math_vocab.copy()
-# for spec in braces_math_vocab:
-#     full_lyx_math_vocab[spec] = braces_math_vocab[spec]
+# generate full Lyx math vocabulary
+lyx_math_vocab = non_braces_math_vocab.copy()
+for spec in braces_math_vocab:
+    lyx_math_vocab[spec] = braces_math_vocab[spec]
 
 # print(math_vocab)
-# print(full_lyx_math_vocab)
+# print(lyx_math_vocab)
+numbers = {str(i): i for i in range(1, 101)}
+# helper functions that will go away with newapi
+def insert(s):
+    Str(str(s))(None)
+
+ctx.set_list('a', numbers)
+ctx.set_list('b', numbers)
+ctx.set_list('symbol', lyx_math_vocab) 
+
+def matrix(m):
+    Key('ctrl-x')
+    Str('math-matrix')
+# def examine(s)
+
 
 keymap = {
 
-# ctx.set_list('full_lyx_math_vocab')
+    # '[optional] bonfire': lambda m: insert(m._words[1]),
 
+
+    # 'matrix {lyx.a} {lyx.b}':   lambda m: [Key('ctrl-x'), "math-matrix ", insert(numbers[m.a[0]]), " ", insert(numbers[m.b[0]]), Key('enter')],
+    # 'matrix {lyx.a} by {lyx.b}':   lambda m: [insert(numbers[m.a[0]]), " ", insert(numbers[m.b[0]]), Key('enter')],
+    'matrix {lyx.a} by {lyx.b}':   [Key('ctrl-x'), lambda m: insert(f"math-matrix {numbers[m.a[0]]} {numbers[m.b[0]]}\n")],
+    
+    'matty': lambda m: matrix,
+    '{lyx.symbol}': lambda m: insert(f"\\{lyx_math_vocab[m.symbol[0]]} "),
+
+    # "matrix <m> by <n>": R(Key("a-x") + Text("math-matrix %(m)s %(n)s") + Key("enter")),
 
 # Non- math things
 
