@@ -92,7 +92,7 @@ context.keymap(
         # editing
         "bracken": [Key("cmd-shift-ctrl-right")],
         # various
-        "comment": Key("cmd-/"),
+        "green it": Key("cmd-/"),
         "search all": Key("cmd-shift-f"),
         "(drop-down | drop)": Key("ctrl-space"),
         "command pallet":Key('cmd-shift-p'),
@@ -161,7 +161,24 @@ context.keymap(
         "trim [trailing] white": Key('cmd-k cmd-x'),
         "change file language": Key('cmd-k cmd-m'),
 
-    
+
+        # Navigation
+        "show all symbols": Key('cmd-t'),
+        "go to symbol": Key('cmd-shift-o'),
+        "[show] problems [panel]": Key('cmd-shift-m'),
+        "next error": Key('f8'),
+        "(prior | previous) error": Key('shift-f8'),
+        "[navigate] [editor] group history": Key('ctrl-shift-tab'),
+        "go back": Key('ctrl--'),
+        "[go] forward": Key('ctrl-shift--'),
+        "toggle tab moves focus": Key('ctrl-shift-m'),
+
+        
+
+
+        # Display
+        "explorer": Key('cmd-shift-e'),
+
 
 
 
