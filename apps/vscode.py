@@ -184,7 +184,7 @@ context.keymap(
         "(prior | previous | un) pane": Key('cmd-k cmd-shift-left'),
         "push pane left": Key('ctrl-cmd-left'),
         "push pane right": Key('ctrl-cmd-right'),
-
+        
         # File management
         "new file": Key('cmd-n'),
         "open [file]": Key('cmd-o'),
