@@ -36,9 +36,9 @@ keymap = {
     # compound
     # "mintwice": "--",
     # "plustwice": "++",
-    # "minquall": "-=",
-    # "pluqual": "+=",
-    # "starqual": "*=",
+    "minquall": "-=",
+    "pluqual": "+=",
+    "starqual": "*=",
     # "triple quote": "'''",
     # "triple tick": "```",
     # "[forward] dubslash": "//",

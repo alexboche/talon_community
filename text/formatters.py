@@ -61,16 +61,16 @@ formatters = normalise_keys(
 
 surrounders = normalise_keys(
     {
-        "(dubstring | coif)": (False, surround('"')),
+        "(dubstring | quotes)": (False, surround('"')),
         "(string)": (False, surround("'")),
         "(tics | glitch)": (False, surround("`")),
         "padded": (False, surround(" ")),
         "dunder": (False, surround("__")),
         "angle": (False, surround("<", ">")),
         "brax": (False, surround("[", "]")),
-        "kirk": (False, surround("{", "}")),
+        "curly": (False, surround("{", "}")),
         "precoif": (False, surround('("', '")')),
-        "(prex | args)": (False, surround("(", ")")),
+        "(prekris | args)": (False, surround("(", ")")),
     }
 )
 

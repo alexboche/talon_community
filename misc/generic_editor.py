@@ -261,6 +261,10 @@ ctx.keymap(
         "cut all": [Key('cmd-a'), Key('cmd-x')],
         "select all": Key('cmd-a'),
 
+        # "quotes": ['""', Key('left')],
+        # "curly": ['{}', Key('left')],
+        
+
         
         
         
