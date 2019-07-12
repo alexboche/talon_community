@@ -55,10 +55,12 @@ ctx.keymap(
         "fox skype": lambda x: switch_app(x, "Skype for Business"),
         "fox signal": lambda x: switch_app(x, "Signal"),
         "system preferences": lambda x: switch_app(x, "System Preferences"),
+        # "fox lyx":
+
     }
 )
 
-hardcoded_application_names = {"term": "iTerm2", "code": "code", "ack": "Acrobat Reader", "Lyx", "Lyx"}
+hardcoded_application_names = {"term": "iTerm2", "code": "code", "ack": "Acrobat Reader"}
 
 
 def update_lists():
