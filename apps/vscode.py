@@ -94,7 +94,7 @@ context.keymap(
         # various
         "green it": Key("cmd-/"),
         "search all": Key("cmd-shift-f"),
-        "(drop-down | drop)": Key("ctrl-space"),
+        "(drop-down)": Key("ctrl-space"),
         "command pallet":Key('cmd-shift-p'),
         "settings": Key('cmd-,'),
 
@@ -173,14 +173,52 @@ context.keymap(
         "[go] forward": Key('ctrl-shift--'),
         "toggle tab moves focus": Key('ctrl-shift-m'),
 
-        
+        # Editor management
+        "close editor": Key('cmd-w'),
+        "close folder": Key('cmd-k f'),
+        "split (editor | screen)": Key('cmd-/'),
+        "first (pane | group)": Key('cmd-1'),
+        "second (pane | group)": Key('cmd-2'),
+        "third (pane | group)": Key('cmd-3'),
+        "next pane": Key('cmd-k cmd-shift-right'),
+        "(prior | previous | un) pane": Key('cmd-k cmd-shift-left'),
+        "push pane left": Key('ctrl-cmd-left'),
+        "push pane right": Key('ctrl-cmd-right'),
 
+        # File management
+        "new file": Key('cmd-n'),
+        "open [file]": Key('cmd-o'),
+        "save as": Key('cmd-shift-s'),
+        "save all": Key('ctrl-cmd-s'),
+        "close": Key('cmd-w'),
+        "close all": Key('cmd-k cmd-w'),
+        "reopen [tab | editor]": Key('cmd-shift-t'),
+        "keep preview mode editor": Key('cmd-k enter'),
+        "copy path": Key('cmd-k p'),
+        "open in finder": Key('cmd-k r'),
+        "new instance [of active file]": Key('cmd-k o'),
+
+        
 
         # Display
         "explorer": Key('cmd-shift-e'),
+        "full screen": Key('ctrl-cmd-f'),
+        "toggle (vertical | horizontal)": Key('alt-cmd-0'),
+        "zoom in": Key('cmd-='),
+        "zoom out": Key('shift-cmd--'),
+        "sidebar": Key('cmd-b'),
+        "find in files": Key('cmd-shift-f'),
+        "[show] source control": Key('ctrl-shift-g'),
+        "[show] debug": Key('cmd-shift-d'),
+        "extensions": Key('cmd-shift-x'),
+        "replace in files": Key('cmd-shift-h'),
+        "search details": Key('cmd-shift-j'),
+        "[show] output panel": Key('cmd-shift-u'),
+        "[open] markdown preview": Key('cmd-shift-v'),
+        "markdown preview [to the] side": Key('cmd-k v'),
+        "zen mode": Key('cmd-k z'), # esc esc to exit
 
-
-
+        "terminal": Key('ctrl-`'),
 
 
 
