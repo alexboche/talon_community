@@ -6,11 +6,14 @@ ctx = Context("outlook", bundle="com.microsoft.Outlook")
 ctx.keymap(
     {
         "reply to e-mail": Key("cmd-r"),
-        "send e-mail": Key("cmd-enter"),
+        "click send": Key("cmd-enter"),
         "clear flag": None,
         "next pain": Key("shift-ctrl-["),
         "preev pain": Key("shift-ctrl-]"),
         "dismiss outlook": [lambda m: switch_app(name="outlook"), Key("cmd-w")],
+        "search": Key('cmd-shift-f'),
+        "empty search": Key('cmd-a backspace escape'),
+        # To got to the messages from the search bar it's two tabs
     }
 )
 
