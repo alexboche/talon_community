@@ -2,7 +2,7 @@ import string
 import collections
 
 from talon import clip, resource
-from talon.voice import Context, Str, press
+from talon.voice import Context, Str, press, Key
 from time import sleep
 import json
 import os
@@ -124,6 +124,13 @@ def sentence_text(m):
     raw_sentence = join_words(parse_words(m, True))
     sentence = raw_sentence[0].upper() + raw_sentence[1:]
     insert(sentence)
+
+def enter_text(m):
+    phrase = join_words(parse_words(m, True))
+    insert(phrase)
+    press("enter")
+
+
 
 
 def word(m):

@@ -1,5 +1,5 @@
-from talon.voice import Word, Context, press
-from talon import clip
+from talon.voice import Word, Context, press, Key
+from talon import clip 
 
 from ..utils import (
     insert,
@@ -11,6 +11,7 @@ from ..utils import (
     word,
     parse_words,
     spoken_text,
+    enter_text
 )
 
 
@@ -115,6 +116,8 @@ ctx = Context("formatters")
 ctx.keymap(
     {
         "(phrase | say) <dgndictation> [over]": text,
+        "(pounce) <dgndictation> [over]": enter_text,
+        
         "(spay) <dgndictation> [over]": [" ", text],
         "(sentence | salor) <dgndictation> [over]": sentence_text,
         "(comma | ,) <dgndictation> [over]": [", ", spoken_text],
