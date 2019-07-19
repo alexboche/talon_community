@@ -210,7 +210,7 @@ ctx.keymap(
         "(spark)": Key("cmd-v"),
         # motions
         "(go word left | bird  | lird)": Key("alt-left"),
-        "(go word right | fird)": Key("alt-right"), 
+        "(go word right | firch)": Key("alt-right"), 
         "(go line after end | Derek)": Key("cmd-right space"),
         "(go line start)": Key("cmd-left"),
         "(go line end)": Key("cmd-right"),
