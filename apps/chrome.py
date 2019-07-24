@@ -182,6 +182,9 @@ context.keymap(
         # "voice" + utils.optional_numerals: [Key('cmd-l'), time.sleep(0.2), insert_number],
         # "voice" + utils.optional_numerals: [Key('cmd-l'), insert_number],
         "voice" + utils.optional_numerals: [Key('cmd-shift-space'), insert_number, Key('enter')],
+        "push" + utils.optional_numerals: [Key('cmd-shift-space'), insert_number, ":b", Key('enter')],
+        "tab" + utils.optional_numerals: [Key('cmd-shift-space'), insert_number, ":t", Key('enter')],
+        # "push" + utils.optional_numerals: [Key('cmd-shift-space'), ":p ", insert_number, Key('enter')],
 
         # vimium
         

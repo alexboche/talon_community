@@ -74,9 +74,10 @@ keymap = {
     
     'matty': lambda m: matrix,
     '{lyx.symbol}': lambda m: insert(f"\\{lyx_math_vocab[m.symbol[0]]} "),
+    
 
     # "matrix <m> by <n>": R(Key("a-x") + Text("math-matrix %(m)s %(n)s") + Key("enter")),
-
+    "skipper": Key('cmd-enter down'), # mix new line in multiline math mode
 # Non- math things
 
 	'lyx italics': Key('cmd-e'), # Make sure the cmds are the same as in another apps
