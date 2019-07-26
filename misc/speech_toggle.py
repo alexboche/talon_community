@@ -103,6 +103,7 @@ sleepy.keymap(
         "clear": Key('backspace'),
         'space': Key('space'),
         "triumph": Key('backspace'),
+        "alpha": [Key('cmd-m'), "\\alpha "],
         # "(repeat | repple)" + utils.numerals: repeat,
         "{repeater.ordinals}": repeat
     }
