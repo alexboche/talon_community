@@ -93,7 +93,6 @@ def new_server(m):
 
 
 keymap = {
-    "cd (com | community)": ["cd .talon/user/talon_community", Key('enter')],
     "shell Whereami": "pwd ",
     "shell home": "~/",
     "lefty": Key("ctrl-a"),
