@@ -256,6 +256,7 @@ ctx.keymap(
         "dynasty": ["hello", "what", [Key('a')]*2],
         "tell {generic_editor.punct}": [Key('cmd-right'), tell_key, Key('enter')],
         "recker": [Key('right'), ': '],
+        "roper":Key('cmd-right enter'),
      
         "copy all": [Key('cmd-a'), Key('cmd-c')],
         "cut all": [Key('cmd-a'), Key('cmd-x')],
