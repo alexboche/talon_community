@@ -29,6 +29,8 @@ def ordinal(n):
     suffix = ["th", "st", "nd", "rd", "th"][min(n % 10, 4)]
     if 11 <= (n % 100) <= 13:
         suffix = "th"
+    if n == 2:
+        return str(n)
     return str(n) + suffix
     # return str(n)
 
