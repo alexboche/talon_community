@@ -89,6 +89,9 @@ def FormatText(m):
         try:
             with clip.capture() as s:
                 press("cmd-c")
+            if "\n" in s.get():
+                words=[]
+            
             words = s.get().split(" ")
         except clip.NoChange:
             words = [""]
@@ -119,6 +122,7 @@ ctx.keymap(
         "(pounce) <dgndictation> [over]": enter_text,
         
         "(spay) <dgndictation> [over]": [" ", text],
+        "(aft | insert) <dgndictation> [over]": [text, " "],
         "(sentence | salor) <dgndictation> [over]": sentence_text,
         "(comma | ,) <dgndictation> [over]": [", ", spoken_text],
         "period <dgndictation> [over]": [". ", sentence_text],

@@ -59,5 +59,8 @@ dictation.keymap({
     "press enter": Key("enter"),
     "fly lease": Key('left'),
     "alpha": [Key('space cmd-m'), "\\alpha "],
+    "beater": [Key('space cmd-m'), "\\beater "],
+    "delter": Key('c'),
+
     "word <dgnwords>": lambda m: auto_format.insert_word(m.dgnwords[0][0])
 })
