@@ -1,4 +1,5 @@
 import os
+import time
 
 from atomicwrites import atomic_write
 from talon import app, ui, webview
@@ -95,6 +96,9 @@ class History:
                 self.refresh()
             if NOTIFY:
                 app.notify(body="\r\n".join(self.history))
+                # added by alex
+                time.sleep(3)
+                self.visible = False
 
     def refresh(self):
         webview.hide()
@@ -108,6 +112,12 @@ class History:
     def hide(self):
         self.visible = False
         self.refresh()
+    def peak(self):
+        self.visible = True
+        self.refresh()
+        time.sleep(3)
+        self.visible = False
+
 
 
 history = History()
@@ -117,6 +127,7 @@ ctx.keymap(
     {
         "(show talon history | last phrase show)": lambda m: history.show(),
         "(hide talon history | last phrase hide)": lambda m: history.hide(),
+        "peak (history | story)": lambda m: history.peak(),
     }
 )
 

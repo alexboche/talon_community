@@ -2,14 +2,14 @@ from talon.voice import Context, press, Key
 import string
 from ..utils import normalise_keys, insert
 
-alpha_alt = "air bat crunch dutch each fail gust hish sit jury kate look made near odd prime quill red sun trap urge vest whisk plex yank zulu".split()
+alpha_alt = "air bat crunch dutch each fail gust hish ike jury kate look made near odd prime quill red sun trap urge vest whisk plex yank zulu".split()
 alphabet = dict(zip(alpha_alt, string.ascii_lowercase))
 
 f_keys = {f"F {i}": f"f{i}" for i in range(1, 13)}
 
 simple_keys = normalise_keys(
     {
-        "(lease | lloyd)": "left",
+        "(lease)": "left",
         "ross": "right",
         "sauce": "up",
         "(dunce)": "down",
@@ -19,10 +19,10 @@ simple_keys = normalise_keys(
         "(tabby)": "tab",
         "( enter | shock )": "enter",
         "( escape | cancel )": "escape",
-        "(lanter | latch)": "home",
+        "(lanter | latch | lairch)": "home",
         "pagedown": "pagedown",
         "pageup": "pageup",
-        "(ranter | ratch)": "end",
+        "(ranter | raltch | ratch)": "end",
     }
 )
 
