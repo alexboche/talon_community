@@ -19,10 +19,10 @@ simple_keys = normalise_keys(
         "(tabby)": "tab",
         "( enter | shock )": "enter",
         "( escape | cancel )": "escape",
-        "(lanter | latch | lairch)": "home",
+        "(lanter | latch | lairch)": "cmd-left",
         "pagedown": "pagedown",
         "pageup": "pageup",
-        "(ranter | raltch | ratch)": "end",
+        "(ranter | raltch | ratch | rairch)": "cmd-right",
     }
 )
 
