@@ -182,6 +182,7 @@ context.keymap(
         # "voice" + utils.optional_numerals: [Key('cmd-l'), time.sleep(0.2), insert_number],
         # "voice" + utils.optional_numerals: [Key('cmd-l'), insert_number],
         "voice" + utils.optional_numerals: [Key('cmd-shift-space'), insert_number, Key('enter')],
+        # "hide hints"
 
         # vimium
         

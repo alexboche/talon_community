@@ -2,7 +2,7 @@ import os
 import time
 
 from atomicwrites import atomic_write
-from talon import app, ui, webview
+from talon import app, ui, webview, cron
 from talon.engine import engine
 from talon.voice import Context
 from talon_init import TALON_HOME
@@ -115,8 +115,9 @@ class History:
     def peak(self):
         self.visible = True
         self.refresh()
-        time.sleep(3)
-        self.visible = False
+        cron.after('3s', self.hide) 
+        # time.sleep(3)
+        # self.visible = False
 
 
 

@@ -2,7 +2,7 @@ import toml
 from talon.voice import Key, Context, Str
 
 ctx = Context("lyx", bundle="org.lyx.lyx")
-
+# ctx = Context("lyx", bundle="com.google.Chrome")
 
 def insert(s):
     return Str(str(s))(None)
@@ -60,6 +60,10 @@ ctx.set_list('symbol', lyx_math_vocab)
 def matrix(m):
     Key('ctrl-x')
     Str('math-matrix')
+
+def lyx_insert(s):
+    Key('ctrl-m')
+    insert(s)
 # def examine(s)
 
 
@@ -71,9 +75,16 @@ keymap = {
     # 'matrix {lyx.a} {lyx.b}':   lambda m: [Key('ctrl-x'), "math-matrix ", insert(numbers[m.a[0]]), " ", insert(numbers[m.b[0]]), Key('enter')],
     # 'matrix {lyx.a} by {lyx.b}':   lambda m: [insert(numbers[m.a[0]]), " ", insert(numbers[m.b[0]]), Key('enter')],
     'matrix {lyx.a} by {lyx.b}':   [Key('ctrl-x'), lambda m: insert(f"math-matrix {numbers[m.a[0]]} {numbers[m.b[0]]}\n")],
-    
+    "popper": Key('a space b'),
     'matty': lambda m: matrix,
-    '{lyx.symbol}': lambda m: insert(f"\\{lyx_math_vocab[m.symbol[0]]} "),
+    '{lyx.symbol}': [lambda m: insert(f"\\{lyx_math_vocab[m.symbol[0]]} ")],
+    'get {lyx.symbol}': [Key('space'), lambda m: insert(f"\\{lyx_math_vocab[m.symbol[0]]} "), Key('right')],
+    # this one is working ('put' below)!
+    'put {lyx.symbol}': [Key('cmd-m'), lambda m: insert(f"\\{lyx_math_vocab[m.symbol[0]]} "), Key('right space')],
+    
+    'alex gamma': [Key('ctrl-m'), "\gamma "],
+    'daniel gamma': lambda m: lyx_insert("gamma"),
+    "test": ["gamma", Key('right')],
 
     # "matrix <m> by <n>": R(Key("a-x") + Text("math-matrix %(m)s %(n)s") + Key("enter")),
 
