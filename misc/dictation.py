@@ -6,15 +6,16 @@ when someone has the time to help debug, message aegis
     Where whatever is the intermediate python
 """
 
-from talon.voice import Str, Key
+from talon.voice import Str, Key, Context
 from talon import ui
 
 from .speech_toggle import dictation
+from .. import vocab
 
 # cleans up some Dragon output from <dgndictation>
 mapping = {"semicolon": ";", "new-line": "\n", "new-paragraph": "\n\n"}
 # used for auto-spacing
-punctuation = set(".,-!?")
+punctuation = set(".,-!?)")
 sentence_ends = set(".!?").union({"\n", "\n\n"})
 
 
@@ -34,6 +35,7 @@ class AutoFormat:
 
     def insert_word(self, word):
         word = str(word).lstrip("\\").split("\\", 1)[0]
+        word = vocab.vocab_alternate.get(word, word)
         word = mapping.get(word, word)
         word = word.rstrip("-")
 
@@ -46,11 +48,15 @@ class AutoFormat:
         insert(word)
 
         self.caps = word in sentence_ends
-        self.space = "\n" not in word
+        self.space = "\n" not in word and word != "("
 
     def phrase(self, m):
         for word in m.dgndictation[0]:
             self.insert_word(word)
+    
+    def set_cap(self, m):
+        self.caps = True
+    
 
 
 auto_format = AutoFormat()
@@ -60,7 +66,17 @@ dictation.keymap({
     "fly lease": Key('left'),
     "alpha": [Key('space cmd-m'), "\\alpha "],
     "beater": [Key('space cmd-m'), "\\beater "],
-    "delter": Key('c'),
+    "delta": [Key('cmd-m'), "\\delta "], 
 
-    "word <dgnwords>": lambda m: auto_format.insert_word(m.dgnwords[0][0])
+    "word <dgnwords>": lambda m: auto_format.insert_word(m.dgnwords[0][0]),
+    "huge": auto_format.set_cap
+})
+
+from .speech_toggle import dictation_group
+
+lyx_dictation = Context('lyx_dictation', bundle='org.lyx.lyx', group=dictation_group)
+# lyx_dictation = Context('lyx_dictation', bundle='com.microsoft.VSCode', group=dictation_group)
+lyx_dictation.keymap({
+    "alex letter": [Key('cmd-m'), r"\epsilon "],
+        
 })

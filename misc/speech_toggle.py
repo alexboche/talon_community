@@ -59,6 +59,7 @@ class VoiceType:
     TALON = 2
     DRAGON = 3
     DICTATION = 4
+    DICTATION_AND_COMMANDS = 5
 
 
 voice_type = VoiceType.TALON
@@ -71,9 +72,9 @@ def set_voice_type(type):
         last_voice_type = voice_type
     voice_type = type
 
-    talon_enabled = type == VoiceType.TALON
+    talon_enabled = type == VoiceType.TALON or type == VoiceType.DICTATION_AND_COMMANDS
     dragon_enabled = type == VoiceType.DRAGON
-    dictation_enabled = type == VoiceType.DICTATION
+    dictation_enabled = type == VoiceType.DICTATION or type == VoiceType.DICTATION_AND_COMMANDS
 
     global speech
     speech.set_enabled(talon_enabled)
@@ -85,7 +86,7 @@ def set_voice_type(type):
     global engine
     if dragon_enabled:
         engine.mimic("wake up".split())
-    else:
+    elif last_voice_type == VoiceType.DRAGON: # without this it will type go to sleep when hyou say priority mode
         engine.mimic("go to sleep".split())
 
     if dictation_enabled:
@@ -93,21 +94,36 @@ def set_voice_type(type):
         dictation_group.enable()
 
 
+#from ryan slack
+import os
+
+reload_paths = [
+    "~/.talon/user/talon_community/misc/repeat_shea.py",
+    '~/.talon/user/talon_community/misc/dictation.py',
+]
+
+def reload_stuff(m):
+    from talon_loader import loader
+    for path in reload_paths:
+        loader.load(os.path.expanduser(path))
+
 sleepy.keymap(
     {
+        "reload stuff": reload_stuff,
         "talon sleep": lambda m: set_voice_type(VoiceType.SLEEPING),
         "talon wake": lambda m: set_voice_type(last_voice_type),
         "dragon mode": lambda m: set_voice_type(VoiceType.DRAGON),
         "dictation mode": lambda m: set_voice_type(VoiceType.DICTATION),
+        "priority mode": lambda m: set_voice_type(VoiceType.DICTATION_AND_COMMANDS),
         "talon mode": lambda m: set_voice_type(VoiceType.TALON),
         "clear": Key('backspace'),
         'space': Key('space'),
         "triumph": Key('backspace'),
-
         
         # "(repeat | repple)" + utils.numerals: repeat,
         "{repeater.ordinals}": repeat
     }
 )
 sleep_group.load()
+
 

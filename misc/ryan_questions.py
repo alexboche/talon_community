@@ -51,6 +51,11 @@ def get_location_url():
             key('cmd-l cmd-a cmd-c')
         path = s.get()
         ctrl.key_press('esc')
+    elif app.name == "Finder":
+        with clip.capture() as s:
+            key('cmd-alt-c')
+        # path = s.get()
+        path = 'file://' + pathname2url(s.get())
     else:
         path = 'file://' + pathname2url(win.doc)
         print(path)

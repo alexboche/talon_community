@@ -1,79 +1,79 @@
-from talon import applescript, ui
-from talon.voice import Context
+# from talon import applescript, ui
+# from talon.voice import Context
 
-from ..utils import parse_words
+# from ..utils import parse_words
 
-ctx = Context("menu")
+# ctx = Context("menu")
 
-menu_items = {}
-
-
-def select_menu_bar_item(m):
-    name = str(m._words[1])
-    full = menu_items.get(name)
-    if not full:
-        return
-    applescript.run(
-        r"""
-tell application "System Events"
-  tell (first process whose frontmost is true)
-    click menu bar item "%s" of menu bar 1
-  end tell
-end tell
-    """
-        % full
-    )
+# menu_items = {}
 
 
-def update_lists():
-    global menu_items
-    items = applescript.run(
-        r"""
-on menubar_items()
-  tell application "System Events"
-    tell (first process whose frontmost is true)
-      try
-	tell menu bar 1
-	  set menuItems to name of every menu bar item
-	  return menuItems
-	end tell
-      on error errStr number e
-	return []
-      end try
-    end tell
-  end tell
-end menubar_items
-
-set theList to menubar_items()
-set {text item delimiters, TID} to {",", text item delimiters}
-set {text item delimiters, theListAsString} to {TID, theList as text}
-return theListAsString
-"""
-    )
-    if items is not None:
-        items = items.split(",")
-    else:
-        items = []
-    new = {}
-    for item in items:
-        words = item.split(" ")
-        for word in words:
-            if word and word not in new:
-                new[word] = item
-        new[item] = item
-    if set(new.keys()) == set(menu_items.keys()):
-        return
-    ctx.set_list("menu_items", new.keys())
-    menu_items = new
+# def select_menu_bar_item(m):
+#     name = str(m._words[1])
+#     full = menu_items.get(name)
+#     if not full:
+#         return
+#     applescript.run(
+#         r"""
+# tell application "System Events"
+#   tell (first process whose frontmost is true)
+#     click menu bar item "%s" of menu bar 1
+#   end tell
+# end tell
+#     """
+#         % full
+#     )
 
 
-def ui_event(event, arg):
-    if event in ("app_activate", "app_launch", "app_close", "win_open", "win_close"):
-        update_lists()
+# def update_lists():
+#     global menu_items
+#     items = applescript.run(
+#         r"""
+# on menubar_items()
+#   tell application "System Events"
+#     tell (first process whose frontmost is true)
+#       try
+# 	tell menu bar 1
+# 	  set menuItems to name of every menu bar item
+# 	  return menuItems
+# 	end tell
+#       on error errStr number e
+# 	return []
+#       end try
+#     end tell
+#   end tell
+# end menubar_items
+
+# set theList to menubar_items()
+# set {text item delimiters, TID} to {",", text item delimiters}
+# set {text item delimiters, theListAsString} to {TID, theList as text}
+# return theListAsString
+# """
+#     )
+#     if items is not None:
+#         items = items.split(",")
+#     else:
+#         items = []
+#     new = {}
+#     for item in items:
+#         words = item.split(" ")
+#         for word in words:
+#             if word and word not in new:
+#                 new[word] = item
+#         new[item] = item
+#     if set(new.keys()) == set(menu_items.keys()):
+#         return
+#     ctx.set_list("menu_items", new.keys())
+#     menu_items = new
 
 
-ui.register("", ui_event)
-update_lists()
+# def ui_event(event, arg):
+#     if event in ("app_activate", "app_launch", "app_close", "win_open", "win_close"):
+#         update_lists()
 
-keymap = {"menu {menu.menu_items}": select_menu_bar_item}
-ctx.keymap(keymap)
+
+# ui.register("", ui_event)
+# update_lists()
+
+# keymap = {"menu {menu.menu_items}": select_menu_bar_item}
+# ctx.keymap(keymap)

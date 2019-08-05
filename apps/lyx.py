@@ -1,5 +1,5 @@
 import toml
-from talon.voice import Key, Context, Str
+from talon.voice import Key, Context, Str, press
 
 ctx = Context("lyx", bundle="org.lyx.lyx")
 # ctx = Context("lyx", bundle="com.google.Chrome")
@@ -50,8 +50,7 @@ for spec in braces_math_vocab:
 # print(lyx_math_vocab)
 numbers = {str(i): i for i in range(1, 101)}
 # helper functions that will go away with newapi
-def insert(s):
-    Str(str(s))(None)
+
 
 ctx.set_list('a', numbers)
 ctx.set_list('b', numbers)
@@ -61,8 +60,11 @@ def matrix(m):
     Key('ctrl-x')
     Str('math-matrix')
 
+def insert(s):
+    Str(str(s))(None)
 def lyx_insert(s):
-    Key('ctrl-m')
+    Key('cmd-m')(None)
+    # press("cmd-m")
     insert(s)
 # def examine(s)
 
@@ -83,8 +85,9 @@ keymap = {
     'put {lyx.symbol}': [Key('cmd-m'), lambda m: insert(f"\\{lyx_math_vocab[m.symbol[0]]} "), Key('right space')],
     
     'alex gamma': [Key('ctrl-m'), "\gamma "],
-    'daniel gamma': lambda m: lyx_insert("gamma"),
-    "test": ["gamma", Key('right')],
+    'tester': lambda m: lyx_insert("gamma"), # this just types out gamma but does not press Key('cmd-m')
+    # "testing": lyx_insert("gamma"), # this one just prints out gamma when i save the file file
+    "test": ["gamma", Key('space')],  
 
     # "matrix <m> by <n>": R(Key("a-x") + Text("math-matrix %(m)s %(n)s") + Key("enter")),
 

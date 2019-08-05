@@ -183,7 +183,8 @@ context.keymap(
         # "voice" + utils.optional_numerals: [Key('cmd-l'), insert_number],
         "voice" + utils.optional_numerals: [Key('cmd-shift-space'), insert_number, Key('enter')],
         # "hide hints"
-
+        "commander": [Key('a'), "b"], # why doesn't this command you anything?
+        "commerce": ["b", Key('a')],
         # vimium
         
         "link": link,

@@ -69,6 +69,7 @@
 
 
 # engine.register("", listener)
+# engine.register("", print)
 
 
 # def ui_event(event, arg):

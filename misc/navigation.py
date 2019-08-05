@@ -15,7 +15,7 @@ keymap = {
     "(search | marco)": Key("cmd-f"),
     "marneck": Key("cmd-g"),
     "marpreev": Key("cmd-shift-g"),
-    "marthis": [Key("alt-right"), Key("shift-alt-left"), Key("cmd-f"), Key("enter")],
+    # "marthis": [Key("alt-right"), Key("shift-alt-left"), Key("cmd-f"), Key("enter")],
 }
 
 ctx.keymap(keymap)
