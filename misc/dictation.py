@@ -35,7 +35,7 @@ class AutoFormat:
 
     def insert_word(self, word):
         word = str(word).lstrip("\\").split("\\", 1)[0]
-        word = vocab.vocab_alternate.get(word, word)
+        word = vocab.vocab_alternate.get(word, word) # what is going on here?
         word = mapping.get(word, word)
         word = word.rstrip("-")
 
@@ -61,7 +61,7 @@ class AutoFormat:
 
 auto_format = AutoFormat()
 dictation.keymap({
-    "<dgndictation>": auto_format.phrase,
+    
     "press enter": Key("enter"),
     "fly lease": Key('left'),
     "alpha": [Key('space cmd-m'), "\\alpha "],
@@ -78,5 +78,6 @@ lyx_dictation = Context('lyx_dictation', bundle='org.lyx.lyx', group=dictation_g
 # lyx_dictation = Context('lyx_dictation', bundle='com.microsoft.VSCode', group=dictation_group)
 lyx_dictation.keymap({
     "alex letter": [Key('cmd-m'), r"\epsilon "],
+    "<dgndictation>": auto_format.phrase,
         
 })
