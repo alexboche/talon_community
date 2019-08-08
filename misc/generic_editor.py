@@ -261,9 +261,11 @@ ctx.keymap(
         "copy all": [Key('cmd-a'), Key('cmd-c')],
         "cut all": [Key('cmd-a'), Key('cmd-x')],
         "select all": Key('cmd-a'),
-
-        # "quotes": ['""', Key('left')],
-        # "curly": ['{}', Key('left')],
+        
+        "quotes": ['""', Key('left')],
+        "curly": ['{}', Key('left')],
+        "brax": ['[]', Key('left')],
+        "(prekris | args)": ['()', Key('left')],
         
 
         
