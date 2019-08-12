@@ -63,7 +63,7 @@ context.keymap(
         + "until"
         + optional_numerals: select_lines_function,
         # Finding text
-        "find": Key("cmd-f"),
+        # "find": Key("cmd-f"),
         "find next <dgndictation>": jump_to_next_word_instance,
         # Clipboard
         "clone": Key("alt-shift-down"),
@@ -202,6 +202,7 @@ context.keymap(
 
         # Display
         "explorer": Key('cmd-shift-e'),
+        "[hide] sibebar": Key('cmd-b'),
         "full screen": Key('ctrl-cmd-f'),
         "toggle (vertical | horizontal)": Key('alt-cmd-0'),
         "zoom in": Key('cmd-='),

@@ -211,7 +211,7 @@ ctx.keymap(
         # motions
         "(go word left | bird  | lird)": Key("alt-left"),
         "(go word right | firch)": Key("alt-right"), 
-        "(go line after end | Derek)": Key("cmd-right space"),
+        # "(go line after end | Derek)": Key("cmd-right space"), 
         "(go line start)": Key("cmd-left"),
         "(go line end)": Key("cmd-right"),
         "(go line before end | samear)": Key("cmd-right left"),

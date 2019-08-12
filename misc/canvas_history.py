@@ -65,7 +65,7 @@ class History:
 
 history = History()
 
-ctx = Context("transparent_history")
+# ctx = Context("transparent_history")
 # ctx.keymap(
 #     {
 #         "(show transparent history | last phrase show)": lambda m: history.show(),

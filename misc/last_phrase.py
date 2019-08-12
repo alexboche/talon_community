@@ -126,8 +126,8 @@ history = History()
 ctx = Context("last_phrase")
 ctx.keymap(
     {
-        "(show talon history | last phrase show)": lambda m: history.show(),
-        "(hide talon history | last phrase hide)": lambda m: history.hide(),
+        "(show [talon] history | last phrase show)": lambda m: history.show(),
+        "(hide [talon] history | last phrase hide)": lambda m: history.hide(),
         "peak (history | story)": lambda m: history.peak(),
     }
 )
