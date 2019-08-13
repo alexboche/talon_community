@@ -8,15 +8,29 @@ ctx.keymap(
         "reply": Key("cmd-r"),
         "reply all": Key('cmd-shift-r'),
         "forward [message]": Key('cmd-j'),
-        "click send": Key("cmd-enter"),
+        "click send mail": Key("cmd-enter"),
         "clear flag": None,
         "next pain": Key("shift-ctrl-["),
-        "preev pain": Key("shift-ctrl-]"),
+        "(preev | previous | prior) pain": Key("shift-ctrl-]"),
         "dismiss outlook": [lambda m: switch_app(name="outlook"), Key("cmd-w")],
         "search": Key('cmd-shift-f'),
-        "empty search": Key('cmd-a backspace escape'),
+        "(empty) search": Key('cmd-a backspace escape'),
           # To got to the messages from the search bar it's two tabs
         "attach file": Key('cmd-e'),
+        "insert emoji": Key('cmd-ctrl-space'),
+        "toggle reading pain": Key('cmd-backslash'), # cmd-buckslash does work, but the key action seems to have trouble
+        "[go to] mail view": Key('cmd-1'),
+        "[go to] calendar view": Key('cmd-2'),
+        "[go to] contacts view": Key('cmd-3'),
+        "[go to] tasks view": Key('cmd-4'),
+        "[go to] notes view": Key('cmd-5'),
+        "close window": Key('cmd-w'),
+        # "next [outlook] window": Key('cmd-tilde'),
+        # "next [outlook] window": Key('cmd-backtick'),
+        # "(preev | previous | prior) window": Key('cmd-shift-tilde'),
+        # "(preev | previous | prior) window": Key('cmd-shift-backtick'),
+
+
     }
 )
 

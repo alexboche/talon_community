@@ -232,6 +232,7 @@ ctx.keymap(
         "(delete word left | splat)": Key("alt-backspace"),
         "(delete word right | sprat)": Key("alt-delete"),
         "(delete [this] word | slurpies)": Key("alt-backspace alt-delete"),
+        
         # selecting 
         "(select find right | crew) <dgndictation>": select_text_to_right_of_cursor,
         "(select find left | trail) <dgndictation>": select_text_to_left_of_cursor,

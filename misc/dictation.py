@@ -64,6 +64,12 @@ dictation.keymap({
     
     "press enter": Key("enter"),
     "fly lease": Key('left'),
+    "bird": Key('alt-left'),
+    "firch": Key('alt-right'),
+    "lease": Key('left'),
+    "ross": Key('right'),
+    "splat": Key('alt-backspace'),
+    "sprat": Key('alt-delete'),
     "alpha": [Key('space cmd-m'), "\\alpha "],
     "beater": [Key('space cmd-m'), "\\beater "],
     "delta": [Key('cmd-m'), "\\delta "], 
