@@ -76,7 +76,8 @@ dictation.keymap({
     "beater": [Key('space cmd-m'), "\\beater "],
     "delta": [Key('cmd-m'), "\\delta "], 
     "(ace | space bar)": Key('space'),
-
+    "lazer": "(",
+    "razer": ")",
     "word <dgnwords>": lambda m: auto_format.insert_word(m.dgnwords[0][0]),
     "huge": auto_format.set_cap
 })

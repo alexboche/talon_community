@@ -12,6 +12,9 @@ ctx = Context("git")
 
 ctx.keymap(
     {
+
+        "cd population [ethics]": "cd /Users/alex/population/population_ethics",
+
         # TODO: remove duplication between the two groups of commands as we really
         # only need one set of commands (eg by completing github issue #40 (use a
         # more comprehensive git grammar))

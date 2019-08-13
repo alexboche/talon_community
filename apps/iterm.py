@@ -1,6 +1,12 @@
 from talon.voice import Key, Context
-
+import json
 ctx = Context("iterm", bundle="com.googlecode.iterm2")
+
+# goto/save implementation
+try:
+    goto = json.loads(resource.read('goto.json'))
+except FileNotFoundError:
+    goto = {}
 
 keymap = {
     "broadcaster": Key("cmd-alt-i"),
