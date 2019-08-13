@@ -89,7 +89,8 @@ english_alphabet = alphabet
 lyx_dictation.set_list('alphabet', alphabet)
 lyx_dictation.keymap({
     "alex letter": [Key('cmd-m'), r"\epsilon "],
-    # "hello {lyx_dictation.alphabet}": lambda m: insert(alphabet[m.alphabet[0]]),
+    "matty {lyx_dictation.alphabet}": [Key('cmd-m'), 
+        lambda m: insert(f'{alphabet[m.alphabet[0]]}'), Key('right space')],
     "<dgndictation>": auto_format.phrase,
         
 })
