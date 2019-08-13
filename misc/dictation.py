@@ -75,22 +75,26 @@ dictation.keymap({
     "alpha": [Key('space cmd-m'), "\\alpha "],
     "beater": [Key('space cmd-m'), "\\beater "],
     "delta": [Key('cmd-m'), "\\delta "], 
+    "(ace | space bar)": Key('space'),
 
     "word <dgnwords>": lambda m: auto_format.insert_word(m.dgnwords[0][0]),
     "huge": auto_format.set_cap
 })
 
 from .speech_toggle import dictation_group
-
+from ..apps.lyx import greek_letters
 lyx_dictation = Context('lyx_dictation', bundle='org.lyx.lyx', group=dictation_group)
 # lyx_dictation = Context('lyx_dictation', bundle='com.microsoft.VSCode', group=dictation_group)
 # alphabet =  basic_keys.alphabet
 english_alphabet = alphabet
 lyx_dictation.set_list('alphabet', alphabet)
+lyx_dictation.set_list('greek', greek_letters)
 lyx_dictation.keymap({
     "alex letter": [Key('cmd-m'), r"\epsilon "],
-    "matty {lyx_dictation.alphabet}": [Key('cmd-m'), 
+    "math {lyx_dictation.alphabet}": [Key('cmd-m'), 
         lambda m: insert(f'{alphabet[m.alphabet[0]]}'), Key('right space')],
+    "math {lyx_dictation.greek}": [Key('cmd-m'), 
+        lambda m: insert(f'\\{greek_letters[m.greek[0]]}'), Key('right space')],
     "<dgndictation>": auto_format.phrase,
         
 })
