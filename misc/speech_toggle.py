@@ -91,6 +91,7 @@ def set_voice_type(type):
 
     if dictation_enabled:
         # Without postponing this "go to sleep" will be printed
+        print("alex: dictation_enabled")
         dictation_group.enable()
 
 
