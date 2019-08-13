@@ -10,7 +10,9 @@ from talon.voice import Str, Key, Context
 from talon import ui
 
 from .speech_toggle import dictation
+from .basic_keys import alphabet
 from .. import vocab
+
 
 # cleans up some Dragon output from <dgndictation>
 mapping = {"semicolon": ";", "new-line": "\n", "new-paragraph": "\n\n"}
@@ -82,8 +84,11 @@ from .speech_toggle import dictation_group
 
 lyx_dictation = Context('lyx_dictation', bundle='org.lyx.lyx', group=dictation_group)
 # lyx_dictation = Context('lyx_dictation', bundle='com.microsoft.VSCode', group=dictation_group)
+alphabet =  basic_keys.alphabet
+lyx_dictation.set_list('alphabet', alphabet)
 lyx_dictation.keymap({
     "alex letter": [Key('cmd-m'), r"\epsilon "],
+    "hello {lyx_dictation.alphabet}": lambda m: insert(alphabet[m.alphabet[0]]),
     "<dgndictation>": auto_format.phrase,
         
 })

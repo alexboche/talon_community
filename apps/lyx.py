@@ -46,15 +46,18 @@ lyx_math_vocab = non_braces_math_vocab.copy()
 for spec in braces_math_vocab:
     lyx_math_vocab[spec] = braces_math_vocab[spec]
 
-# print(math_vocab)
-# print(lyx_math_vocab)
+
+
 numbers = {str(i): i for i in range(1, 101)}
 # helper functions that will go away with newapi
 
-
+greek_letters = math_vocab["non_braces"]["greek"]
+math_fonts = math_vocab["braces"]["math_fonts"]
 ctx.set_list('a', numbers)
 ctx.set_list('b', numbers)
 ctx.set_list('symbol', lyx_math_vocab) 
+ctx.set_list('greek', greek_letters)
+ctx.set_list('math_fonts', math_fonts)
 
 def matrix(m):
     Key('ctrl-x')
@@ -70,7 +73,9 @@ def lyx_insert(s):
 
 
 keymap = {
-
+    "greek {lyx.greek}": lambda m: insert(f"\\{greek_letters[m.greek[0]]} "),
+    "font {lyx.math_fonts}": lambda m: insert(f"\\{math_fonts[m.math_fonts[0]]} "), # note two different uses math_fonts here    
+    "mather": Key('cmd-m'),
     # '[optional] bonfire': lambda m: insert(m._words[1]),
 
 

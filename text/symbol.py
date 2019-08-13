@@ -31,7 +31,7 @@ keymap = {
     "long equals": " = ",
     "long minus": " - ",
     "long plus": " + ",
-    "double": " = ",
+    "double": " == ",
 
     # compound
     # "mintwice": "--",

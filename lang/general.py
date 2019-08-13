@@ -28,7 +28,7 @@ ctx.keymap(
         "((op | is) greater [than] or equal [to] | grayqual)": " >= ",
         "((op | is) less [than] or equal [to] | lessqual)": " <= ",
         "([(op | is)] exactly (equal [to] | equals) | triple equals | trickle)": " === ",
-        "([(op | is)] not exactly (equal [to] | equals) | ranqual | nockle)": " !== ",
+        # "([(op | is)] not exactly (equal [to] | equals) | ranqual | nockle)": " !== ",
         "(op (power | exponent) | to the power [of])": " ** ",
         "op and": " && ",
         "op or": " || ",
