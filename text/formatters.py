@@ -118,12 +118,12 @@ ctx = Context("formatters")
 
 ctx.keymap(
     {
-        "(phrase | say) <dgndictation> [over]": text,
+        "(phrase | say | salor) <dgndictation> [over]": text,
         "(pounce) <dgndictation> [over]": enter_text,
         
         "(spay) <dgndictation> [over]": [" ", text],
         "(aft | insert) <dgndictation> [over]": [text, " "],
-        "(sentence | salor) <dgndictation> [over]": sentence_text,
+        "(sentence | sent) <dgndictation> [over]": sentence_text,
         "(comma | ,) <dgndictation> [over]": [", ", spoken_text],
         "period <dgndictation> [over]": [". ", sentence_text],
         # "pounce <dgndictation>" : [text, Key('enter')],

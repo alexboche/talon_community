@@ -30,7 +30,7 @@ def ordinal(n):
     if 11 <= (n % 100) <= 13:
         suffix = "th"
     if n == 2:
-        return str(n)
+        return "sec"
     return str(n) + suffix
     # return str(n)
 

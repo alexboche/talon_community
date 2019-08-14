@@ -53,6 +53,7 @@ def select_text_to_left_of_cursor(m):
     old = clip.get()
     key = join_words(words).lower()
     press("shift-home", wait=2000)
+    # press("cmd-shift-home", wait=2000)
     press("cmd-c", wait=2000)
     press("right", wait=2000)
     text_left = clip.get()
@@ -76,6 +77,7 @@ def select_text_to_right_of_cursor(m):
     key = join_words(words).lower()
     old = clip.get()
     press("shift-end", wait=2000)
+    # press("cmd-shift-end", wait=2000)
     press("cmd-c", wait=2000)
     press("left", wait=2000)
     text_right = clip.get()
@@ -234,8 +236,8 @@ ctx.keymap(
         "(delete [this] word | slurpies)": Key("alt-backspace alt-delete"),
         
         # selecting 
-        "(select find right | crew) <dgndictation>": select_text_to_right_of_cursor,
-        "(select find left | trail) <dgndictation>": select_text_to_left_of_cursor,
+        "(grab ross | select find right | crew) <dgndictation>": select_text_to_right_of_cursor,
+        "(grab lease | select find left | trail) <dgndictation>": select_text_to_left_of_cursor,
         "(select this word | word this)": Key("alt-right shift-alt-left"),
         "(select this line | shackle)": Key("cmd-right shift-cmd-left"),
         "(shift home | shin lairch)": Key("shift-home"),
@@ -243,8 +245,10 @@ ctx.keymap(
         "(select up | shreep | shin sauce)": Key("shift-up"),
         "(select down | shroom | shin dunce)": Key("shift-down"),
         "(select all | olly)": Key("cmd-a"),
-        "(select left | shrim | shin lease)": Key("shift-left"),
-        "(select right | shrish | shin ross)": Key("shift-right"),
+        # "(select left | shrim | shin lease)": Key("shift-left"),
+        "(select left | shin lease)": Key("shift-left"),
+        # "(select right | shrish | shin ross)": Key("shift-right"),
+        "(select right | shin ross)": Key("shift-right"),
         "(select word number {generic_editor.n}* above | wordpreev {generic_editor.n}*)": word_prev,
         "big word preev {generic_editor.n}*": big_word_prev,
         "big word neck {generic_editor.n}*": big_word_neck,
@@ -268,6 +272,8 @@ ctx.keymap(
         "curly": ['{}', Key('left')],
         "brax": ['[]', Key('left')],
         "(prekris | args)": ['()', Key('left')],
+
+        "airp":Key('a'),
         
 
         
