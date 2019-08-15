@@ -93,6 +93,9 @@ def set_voice_type(type):
         # Without postponing this "go to sleep" will be printed
         print("alex: dictation_enabled")
         dictation_group.enable()
+    
+    # if type == 1:
+        # engine.mimic("go to sleep".split())
 
 
 #from ryan slack
