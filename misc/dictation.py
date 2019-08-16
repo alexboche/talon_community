@@ -79,7 +79,8 @@ dictation.keymap({
     "lazer": "(",
     "razer": ")",
     "word <dgnwords>": lambda m: auto_format.insert_word(m.dgnwords[0][0]),
-    "huge": auto_format.set_cap
+    "huge": auto_format.set_cap,
+    "<dgndictation>": auto_format.phrase,
 })
 
 from .speech_toggle import dictation_group
@@ -96,6 +97,7 @@ lyx_dictation.keymap({
         lambda m: insert(f'{alphabet[m.alphabet[0]]}'), Key('right space')],
     "math {lyx_dictation.greek}": [Key('cmd-m'), 
         lambda m: insert(f'\\{greek_letters[m.greek[0]]}'), Key('right space')],
-    "<dgndictation>": auto_format.phrase,
+
+    
         
 })
