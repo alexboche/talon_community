@@ -85,7 +85,7 @@ keymap = {
     "popper": Key('a space b'),
     'matty': lambda m: matrix,
     '{lyx.symbol}': [lambda m: insert(f"\\{lyx_math_vocab[m.symbol[0]]} ")],
-    'get {lyx.symbol}': [Key('space'), lambda m: insert(f"\\{lyx_math_vocab[m.symbol[0]]} "), Key('right')],
+    # 'get {lyx.symbol}': [Key('space'), lambda m: insert(f"\\{lyx_math_vocab[m.symbol[0]]} "), Key('right')],
     # this one is working ('put' below)!
     'put {lyx.symbol}': [Key('cmd-m'), lambda m: insert(f"\\{lyx_math_vocab[m.symbol[0]]} "), Key('right space')],
     
