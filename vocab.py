@@ -7,7 +7,7 @@ vocab_alternate = config.load_config_json("vocab_alternate.json", dict)
 
 vocab_alternate.update({f"shrink {k}": v for k, v in shrink.shrink_map.items()})
 vocab_non_spoken = config.load_config_json("vocab.json", dict)
-print(vocab_non_spoken)
+
 ctx = Context("vocab")
 # print(config.load_config_json("vocab.json", dict))
 # for k in config.load_config_json("vocab.json", dict):

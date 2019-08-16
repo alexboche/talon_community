@@ -221,6 +221,9 @@ context.keymap(
 
         "terminal": Key('ctrl-`'),
 
+        # Programming
+        "double": " == ",
+
 
 
 
