@@ -95,8 +95,12 @@ lyx_dictation.keymap({
     "alex letter": [Key('cmd-m'), r"\epsilon "],
     "math {lyx_dictation.alphabet}": [Key('cmd-m'), 
         lambda m: insert(f'{alphabet[m.alphabet[0]]}'), Key('right space')],
+    "math big {lyx_dictation.alphabet}": [Key('cmd-m'), 
+        lambda m: insert(f'{alphabet[m.alphabet[0]].title()}'), Key('right space')],
     "math {lyx_dictation.greek}": [Key('cmd-m'), 
         lambda m: insert(f'\\{greek_letters[m.greek[0]]}'), Key('right space')],
+    "math big {lyx_dictation.greek}": [Key('cmd-m'), 
+        lambda m: insert(f'\\{greek_letters[m.greek[0]].title()}'), Key('right space')],
 
     
         

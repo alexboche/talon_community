@@ -74,6 +74,7 @@ def lyx_insert(s):
 
 keymap = {
     "greek {lyx.greek}": lambda m: insert(f"\\{greek_letters[m.greek[0]]} "),
+    "big greek {lyx.greek}": lambda m: insert(f"\\{greek_letters[m.greek[0]].title()} "),
     "font {lyx.math_fonts}": lambda m: insert(f"\\{math_fonts[m.math_fonts[0]]} "), # note two different uses math_fonts here    
     "mather": Key('cmd-m'),
     # '[optional] bonfire': lambda m: insert(m._words[1]),
@@ -85,9 +86,11 @@ keymap = {
     "popper": Key('a space b'),
     'matty': lambda m: matrix,
     '{lyx.symbol}': [lambda m: insert(f"\\{lyx_math_vocab[m.symbol[0]]} ")],
+    'big {lyx.symbol}': [lambda m: insert(f"\\{lyx_math_vocab[m.symbol[0]].title()} ")],
     # 'get {lyx.symbol}': [Key('space'), lambda m: insert(f"\\{lyx_math_vocab[m.symbol[0]]} "), Key('right')],
     # this one is working ('put' below)!
     'put {lyx.symbol}': [Key('cmd-m'), lambda m: insert(f"\\{lyx_math_vocab[m.symbol[0]]} "), Key('right space')],
+    'put big {lyx.symbol}': [Key('cmd-m'), lambda m: insert(f"\\{lyx_math_vocab[m.symbol[0]].title()} "), Key('right space')],
     
     'alex gamma': [Key('ctrl-m'), "\gamma "],
     'tester': lambda m: lyx_insert("gamma"), # this just types out gamma but does not press Key('cmd-m')
@@ -95,6 +98,16 @@ keymap = {
     "test": ["gamma", Key('space')],  
 
     # "matrix <m> by <n>": R(Key("a-x") + Text("math-matrix %(m)s %(n)s") + Key("enter")),
+
+
+# Environments
+"insert [numbered] equation": [Key('ctrl-x'),
+     "command-sequence math-mode on; math-mutate equation;math-number-toggle", Key('enter')],
+"insert [numbered] align": [Key('ctrl-x'),
+     "command-sequence math-mode on; math-mutate align;math-number-toggle", Key('enter')],
+"insert [numbered] multline": [Key('ctrl-x'),
+     "command-sequence math-mode on; math-mutate multline;math-number-toggle", Key('enter')],
+
 
 # Non- math things
 

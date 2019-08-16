@@ -211,7 +211,7 @@ ctx.keymap(
         "(stoosh)": Key("cmd-c"),
         "(spark)": Key("cmd-v"),
         # motions
-        "(go word left | bird  | lird)": Key("alt-left"),
+        "(go word left | bird )": Key("alt-left"),
         "(go word right | firch)": Key("alt-right"), 
         # "(go line after end | Derek)": Key("cmd-right space"), 
         "(go line start)": Key("cmd-left"),
@@ -227,7 +227,7 @@ ctx.keymap(
             "ctrl-a cmd-left shift-down cmd-c down cmd-v"
         ),
         # deleting
-        "(delete around this | slurp)": Key("backspace delete"),
+        "(delete around this)": Key("backspace delete"),
         "(delete line left | snip left | snipple)": Key("shift-cmd-left delete"),
         "(delete line right | snip right | snipper)": Key("shift-cmd-right delete"),
         "(delete [this] line)": Key("shift-cmd-right delete delete ctrl-a cmd-left"),
