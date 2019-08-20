@@ -27,9 +27,9 @@ def title_case_capitalize_word(index, word, _):
 
 formatters = normalise_keys(
     {
-        "tree": (True, lambda i, word, _: word[0:3] if i == 0 else ""),
-        "quad": (True, lambda i, word, _: word[0:4] if i == 0 else ""),
-        "(cram | camel)": (
+        # "tree": (True, lambda i, word, _: word[0:3] if i == 0 else ""),
+        # "quad": (True, lambda i, word, _: word[0:4] if i == 0 else ""),
+        "(camel)": (
             True,
             lambda i, word, _: word if i == 0 else word.capitalize(),
         ),
@@ -45,17 +45,17 @@ formatters = normalise_keys(
             True,
             lambda i, word, _: "$" + word if i == 0 else word.capitalize(),
         ),
-        "champ": (True, lambda i, word, _: word.capitalize() if i == 0 else " " + word),
+        # "champ": (True, lambda i, word, _: word.capitalize() if i == 0 else " " + word),
         "lowcram": (
             True,
             lambda i, word, _: "@" + word if i == 0 else word.capitalize(),
         ),
-        "(criff | criffed)": (True, lambda i, word, _: word.capitalize()),
+        # "(criff | criffed)": (True, lambda i, word, _: word.capitalize()),
         "tridal": (False, lambda i, word, _: word.capitalize()),
         "snake": (True, lambda i, word, _: word if i == 0 else "_" + word),
         "dotsnik": (True, lambda i, word, _: "." + word if i == 0 else "_" + word),
         # "smash": (True, lambda i, word, _: word),
-        "(spine | kebab)": (True, lambda i, word, _: word if i == 0 else "-" + word),
+        "(kebab)": (True, lambda i, word, _: word if i == 0 else "-" + word),
         "title": (False, title_case_capitalize_word),
     }
 )
@@ -63,7 +63,7 @@ formatters = normalise_keys(
 surrounders = normalise_keys(
     {
         "(dubstring | quotes)": (False, surround('"')),
-        "(string)": (False, surround("'")),
+        # "(string)": (False, surround("'")),
         "(tics | glitch)": (False, surround("`")),
         "padded": (False, surround(" ")),
         "dunder": (False, surround("__")),
@@ -71,7 +71,7 @@ surrounders = normalise_keys(
         "brax": (False, surround("[", "]")),
         "curly": (False, surround("{", "}")),
         "precoif": (False, surround('("', '")')),
-        "(prekris | args)": (False, surround("(", ")")),
+        "(prekris)": (False, surround("(", ")")),
     }
 )
 

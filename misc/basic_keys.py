@@ -2,7 +2,7 @@ from talon.voice import Context, press, Key
 import string
 from ..utils import normalise_keys, insert
 
-alpha_alt = "air bat crunch drank each fail gust hish ike jank kate look made near odd prime quill red sun trap urk vest whisk plex yank zorch".split()
+alpha_alt = "airp bat crunch drank each fail gust hish ike jank kate look made near odd prime quill red sun trap urk vest whisk plex yank zorch".split()
 alphabet = dict(zip(alpha_alt, string.ascii_lowercase))
 
 f_keys = {f"F {i}": f"f{i}" for i in range(1, 13)}
@@ -22,7 +22,7 @@ simple_keys = normalise_keys(
         "(lanter | latch | lairch)": "cmd-left",
         "pagedown": "pagedown",
         "pageup": "pageup",
-        "(ranter | raltch | ratch | rairch)": "cmd-right",
+        "(ranter | rairch)": "cmd-right",
     }
 )
 
