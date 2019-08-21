@@ -203,7 +203,7 @@ def word_prev(m, valid_characters=alphanumeric):
 ctx.keymap(
     {
         # meta
-        "(save)": Key("cmd-s"),
+        "(saver)": Key("cmd-s"),
         "(undo)": Key("cmd-z"),
         "(redo)": Key("cmd-shift-z"),
         # clipboard

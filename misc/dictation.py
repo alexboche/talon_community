@@ -71,7 +71,7 @@ dictation.keymap({
     "lease": Key('left'),
     "ross": Key('right'),
     "splat": Key('alt-backspace'),
-    "sprat": Key('alt-delete'),
+    "spratter": Key('alt-delete'),
     "alpha": [Key('space cmd-m'), "\\alpha "],
     "beater": [Key('space cmd-m'), "\\beater "],
     "delta": [Key('cmd-m'), "\\delta "], 

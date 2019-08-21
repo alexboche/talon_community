@@ -1,15 +1,23 @@
-from talon import ui, ctrl
+from talon import ui, ctrl, cron
 from talon.engine import engine
 from talon.canvas import Canvas
+from talon.voice import Context
 
-hist_len = 5
+ctx = Context('history')
+
+hist_len = 20
 
 class History:
     def __init__(self):
+        self.enabled = False
         self.history = []
         engine.register('post:phrase', self.on_phrase_post)
         self.canvas = Canvas.from_screen(ui.main_screen())
+        # self.canvas = Canvas(0, 0, 640, 480, panel=True, draggable=True)
         self.canvas.register('draw', self.draw)
+
+    def toggle_enabled(self):
+        self.enabled = not self.enabled
 
     def parse_phrase(self, phrase):
         return ' '.join(word.split('\\')[0] for word in phrase)
@@ -20,11 +28,11 @@ class History:
         if cmd == 'p.end' and phrase:
             self.history.append(phrase)
             self.history = self.history[-hist_len:]
-            # self.freeze()
+            # self.canvas.freeze()
 
     def draw(self, canvas):
         text = self.history[:]
-        if not text:
+        if not text or not self.enabled:
             return
         paint = canvas.paint
         paint.filter_quality = paint.FilterQuality.LOW
@@ -48,6 +56,8 @@ class History:
             line_spacing = max(line_spacing, trect.height)
             text_top = min(text_top, y - trect.height)
 
+        x = canvas.x + 1280 - 2*rect_pad - width
+
         line_spacing += text_pad
         text_bot = y + (len(text) - 1) * line_spacing
         height = text_bot - text_top
@@ -65,12 +75,7 @@ class History:
 
 history = History()
 
-# ctx = Context("transparent_history")
-# ctx.keymap(
-#     {
-#         "(show transparent history | last phrase show)": lambda m: history.show(),
-#         "(hide talon history | last phrase hide)": lambda m: history.hide(),
-#         "peak (history | story)": lambda m: history.peak(),
-#     }
-# )
-
+keymap = {
+    "[toggle] history [(on | off)]": lambda m: history.toggle_enabled()
+}
+ctx.keymap(keymap)
