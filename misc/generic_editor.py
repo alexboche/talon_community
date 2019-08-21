@@ -271,9 +271,9 @@ ctx.keymap(
         "quotes": ['""', Key('left')],
         "curly": ['{}', Key('left')],
         "brax": ['[]', Key('left')],
-        "(prekris | args)": ['()', Key('left')],
+        "(prekris)": ['()', Key('left')],
 
-        "airp":Key('a'),
+        # "airp":Key('a'),
         
 
         

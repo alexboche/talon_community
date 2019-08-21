@@ -193,7 +193,7 @@ keymap = {
 
 click_keymap = {
     "(click | mick | shsh)": delayed_click,
-    "(right click | rick)": delayed_right_click,
+    "(right click | ricker)": delayed_right_click,
     "(double click | dick)": delayed_dubclick,
     "triple click": delayed_tripclick,
     "squat": mouse_drag,

@@ -121,7 +121,7 @@ ctx.keymap(
         "(phrase | say | salor) <dgndictation> [over]": text,
         "(pounce) <dgndictation> [over]": enter_text,
         
-        "(spay) <dgndictation> [over]": [" ", text],
+        "(spray) <dgndictation> [over]": [" ", text],
         "(aft | insert) <dgndictation> [over]": [text, " "],
         "(sentence | sent) <dgndictation> [over]": sentence_text,
         "(comma | ,) <dgndictation> [over]": [", ", spoken_text],

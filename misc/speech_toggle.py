@@ -122,7 +122,7 @@ sleepy.keymap(
         "talon mode": lambda m: set_voice_type(VoiceType.TALON),
         "clear": Key('backspace'),
         'space': Key('space'),
-        "triumph": Key('backspace'),
+        # "triumph": Key('backspace'),
         
         # "(repeat | repple)" + utils.numerals: repeat,
         "{repeater.ordinals}": repeat

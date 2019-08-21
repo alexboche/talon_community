@@ -2,7 +2,7 @@ from talon.voice import Context, press, Key
 import string
 from ..utils import normalise_keys, insert
 
-alpha_alt = "airp bat crunch drank each fail gust hish ike jank kate look made near odd prime quill red sun trap urk vest whisk plex yank zorch".split()
+alpha_alt = "arch bat crunch drank each fail gust hish ike jank kate look made near odd prime quill root sun trap urk vest whisk plex yank zorch".split()
 alphabet = dict(zip(alpha_alt, string.ascii_lowercase))
 
 f_keys = {f"F {i}": f"f{i}" for i in range(1, 13)}
@@ -34,7 +34,7 @@ symbols = normalise_keys(
         # ``text/symbol.py``.
         "(ticky | back tick)": "`",
         "(comma | ,)": ",",
-        "(dot | period)": ".",
+        "(donker | period)": ".",
         "(semicolon | semper)": ";",
         "(single quote | quatchet)": "'",
         "(lacky | left square bracket)": "[",
@@ -57,7 +57,7 @@ modifiers = normalise_keys(
         "command": "cmd",
         "(control | troll)": "ctrl",
         "(shift | sky)": "shift",
-        "(alt | option)": "alt",
+        "(option)": "alt",
     }
 )
 
@@ -127,9 +127,9 @@ ctx.keymap(
         "{basic_keys.modifiers}* {basic_keys.alphabet}+": press_keys,
         "({basic_keys.modifiers}+ | num) {basic_keys.digits}+": press_keys,
         "{basic_keys.modifiers}* {basic_keys.keys}+": press_keys,
-        "(go | {basic_keys.modifiers}+) {basic_keys.arrows}+": press_keys,
+        # "(go | {basic_keys.modifiers}+) {basic_keys.arrows}+": press_keys,
         "number {basic_keys.digits}+ [over]": press_keys,
-        "(tarsh | shift tab)": Key("shift-tab"),
+        "( shift tab)": Key("shift-tab"),
         # "tarpy": [Key("tab"), Key("tab")],
     }
 )
