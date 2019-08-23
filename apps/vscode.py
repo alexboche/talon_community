@@ -86,6 +86,7 @@ context.keymap(
         "(prexta | prior tab | untab)": Key("cmd-alt-left"),
         "new tab": Key("cmd-n"),
         "jump" + optional_numerals: jump_tabs,
+        "(recent | er) tab": Key('ctrl-tab'),
         # Menu
         "save": Key("cmd+s"),
         "open": Key("cmd+o"),
