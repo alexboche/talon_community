@@ -232,7 +232,7 @@ ctx.keymap(
         "(delete line right | snip right | snipper)": Key("shift-cmd-right delete"),
         "(delete [this] line)": Key("shift-cmd-right delete delete ctrl-a cmd-left"),
         "(delete word left | splat)": Key("alt-backspace"),
-        "(delete word right | sprat)": Key("alt-delete"),
+        "(delete word right | spratter)": Key("alt-delete"),
         "(delete [this] word | slurpies)": Key("alt-backspace alt-delete"),
         
         # selecting 

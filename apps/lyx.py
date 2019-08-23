@@ -107,6 +107,7 @@ keymap = {
      "command-sequence math-mode on; math-mutate align;math-number-toggle", Key('enter')],
 "insert [numbered] multline": [Key('ctrl-x'),
      "command-sequence math-mode on; math-mutate multline;math-number-toggle", Key('enter')],
+"insert comment": [Key('ctrl-x'), "note-insert Comment", Key('enter')],
 
 
 # Non- math things
