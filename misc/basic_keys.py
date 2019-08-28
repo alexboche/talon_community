@@ -35,7 +35,7 @@ symbols = normalise_keys(
         # ``text/symbol.py``.
         "(ticky | back tick)": "`",
         "(comma | ,)": ",",
-        "(donker | period)": ".",
+        "(donker | dosh | period)": ".",
         "(semicolon | semper)": ";",
         "(single quote | quatchet)": "'",
         "(lacky | left square bracket)": "[",
@@ -57,7 +57,7 @@ modifiers = normalise_keys(
     {
         "command": "cmd",
         "(control | troll)": "ctrl",
-        "(shift | sky)": "shift",
+        "(shift)": "shift",
         "(option)": "alt",
     }
 )

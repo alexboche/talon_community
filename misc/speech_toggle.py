@@ -10,7 +10,7 @@ sleep_group = ContextGroup("sleepy")
 sleepy = Context("sleepy", group=sleep_group)
 
 dictation_group = ContextGroup("dictation")
-dictation = Context("dictation", group=dictation_group)
+dictation = Context("dictation", group=dictation_group, func=lambda app, win : app.bundle in ["com.google.Chrome" ,"com.sublimetext.3" ,"texmaker", "org.lyx.lyx", "com.microsoft.Outlook"])
 dictation_group.load()
 dictation_group.disable()
 

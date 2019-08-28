@@ -19,13 +19,14 @@ def jump_to_line(m):
     Str(str(line_number))(None)
     press("enter")
 
-
+latexmap = {
+    # Latex
+    "color box": ["\\colorbox{gray}{}", Key('left')],
+} 
 
 keymap = {
     
-    # Latex
-    "color box": ["\\colorbox{gray}{}", Key('left')],
-
+    
     # Sublime specific
     # general
     "green it": Key('cmd-/'),
@@ -94,3 +95,4 @@ keymap = {
     
 }
 ctx.keymap(keymap)
+ctx.keymap(latexmap)

@@ -64,7 +64,7 @@ class AutoFormat:
 auto_format = AutoFormat()
 dictation.keymap({
     
-    "press enter": Key("enter"),
+    "new line": Key("enter"),
     "fly lease": Key('left'),
     "bird": Key('alt-left'),
     "firch": Key('alt-right'),
@@ -72,18 +72,20 @@ dictation.keymap({
     "ross": Key('right'),
     "splat": Key('alt-backspace'),
     "spratter": Key('alt-delete'),
-    "alpha": [Key('space cmd-m'), "\\alpha "],
-    "beater": [Key('space cmd-m'), "\\beater "],
-    "delta": [Key('cmd-m'), "\\delta "], 
+    # "alpha": [Key('space cmd-m'), "\\alpha "],
+    # "beater": [Key('space cmd-m'), "\\beater "],
+    # "delta": [Key('cmd-m'), "\\delta "], 
     "(ace | space bar)": Key('space'),
     "lazer": "(",
     "razer": ")",
     "word <dgnwords>": lambda m: auto_format.insert_word(m.dgnwords[0][0]),
     "huge": auto_format.set_cap,
-    "<dgndictation>": auto_format.phrase,
+    # "<dgndictation>": auto_format.phrase,
 })
 
 from .speech_toggle import dictation_group
+
+
 from ..apps.lyx import greek_letters
 lyx_dictation = Context('lyx_dictation', bundle='org.lyx.lyx', group=dictation_group)
 # lyx_dictation = Context('lyx_dictation', bundle='com.microsoft.VSCode', group=dictation_group)
