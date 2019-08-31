@@ -3,6 +3,7 @@ import time
 from .. import utils
 from .web import browser
 from ..misc import switcher
+# from ..misc import delayed_right_click 
 
 from talon import ui
 from talon.voice import Context, Key, Str, press
@@ -124,24 +125,35 @@ def insert_number(m):
     time.sleep(0.3)
     # press("cmd-g")
     Str(str(number))(None)
-    # press("enter")
+    time.sleep(0.1)
+    Str(":p")(None)
+    press("enter")
+
+# def cbv_push(m):
+#     number = utils.parse_words_as_integer(m._words[1:])
+
+#     if number is None:
+#         return
+#     time.sleep(0.3)
+#     # press("cmd-g")
+#     Str(str(number))(None)
+#     # press("enter")
 
 context.keymap(
     {
         "(address bar | focus address | focus url | url | quick bar)": focus_address_bar,
-        "test daniel": Key("cmd-l d"),
         "copy url": Key("escape y y"),
         "go back": back,
         "go forward": forward,
         "page reload": Key("cmd-r"),
         "reload page": Key("cmd-r"),
         "hard reload": Key("cmd-shift-r"),
-        "new [tab]": Key("cmd-t"),
-        "new tab {global_browser.webpages}": go_to_webpage,
+        "new tab": Key("cmd-t"),
+        # "new tab {global_browser.webpages}": go_to_webpage,
         "close tab": Key("cmd-w"),
         "reopen tab": Key("cmd-shift-t"),
-        "(next tab | nab)": Key("cmd-shift-]"),
-        "((last | previous | preev) tab | lab)": Key("cmd-shift-["),
+        "(next tab | nabber)": Key("cmd-shift-]"),
+        "((last | previous | preev) tab | labber)": Key("cmd-shift-["),
         "tab (1 | 2 | 3 | 4 | 5 | 6 | 7 | 8)": jump_tab,
         "(end | rightmost) tab": Key("cmd-9"),
         "marco": Key("cmd-f"),
@@ -182,9 +194,11 @@ context.keymap(
         # "voice" + utils.optional_numerals: [Key('cmd-l'), time.sleep(0.2), insert_number],
         # "voice" + utils.optional_numerals: [Key('cmd-l'), insert_number],
         "voice" + utils.optional_numerals: [Key('cmd-shift-space'), insert_number, Key('enter')],
-        # "hide hints"
-        "commander": [Key('a'), "b"], # why doesn't this command you anything?
-        "commerce": ["b", Key('a')],
+        "push" + utils.optional_numerals: [Key('cmd-shift-space'), insert_number, ":", "p", Key('enter')],
+        # "nab that": [delayed_right_click, Key('down'), Key('enter')],
+        # "hide hints": [Key('cmd-shift-space'), ":-", Key('enter')],
+        # "commander": [Key('a'), "b"], # why doesn't this command you anything?
+        # "commerce": ["b", Key('a')],
         # vimium
         
         "link": link,

@@ -51,12 +51,12 @@ formatters = normalise_keys(
             lambda i, word, _: "@" + word if i == 0 else word.capitalize(),
         ),
         # "(criff | criffed)": (True, lambda i, word, _: word.capitalize()),
-        "tridal": (False, lambda i, word, _: word.capitalize()),
+        "tridal case": (False, lambda i, word, _: word.capitalize()),
         "snake": (True, lambda i, word, _: word if i == 0 else "_" + word),
-        "dotsnik": (True, lambda i, word, _: "." + word if i == 0 else "_" + word),
+        # "dotsnik": (True, lambda i, word, _: "." + word if i == 0 else "_" + word),
         # "smash": (True, lambda i, word, _: word),
-        "(kebab)": (True, lambda i, word, _: word if i == 0 else "-" + word),
-        "title": (False, title_case_capitalize_word),
+        "(kebab case)": (True, lambda i, word, _: word if i == 0 else "-" + word),
+        "title case": (False, title_case_capitalize_word),
     }
 )
 
@@ -119,6 +119,7 @@ ctx = Context("formatters")
 ctx.keymap(
     {
         "(phrase) <dgndictation> [over]": text,
+        "(skray) <dgndictation>++ [over]": text,
         "(pounce) <dgndictation> [over]": enter_text,
         
         "(spray) <dgndictation> [over]": [" ", text],
