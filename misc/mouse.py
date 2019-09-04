@@ -194,7 +194,7 @@ keymap = {
 click_keymap = {
     "(click | mick | shsh)": delayed_click,
     "(right click | ricker)": delayed_right_click,
-    "(double click | dick)": delayed_dubclick,
+    "(double click | dicker)": delayed_dubclick,
     "triple click": delayed_tripclick,
     "squat": mouse_drag,
     "bench": mouse_release,
@@ -221,3 +221,17 @@ keymap.update(click_keymap)
 ctx.keymap(keymap)
 
 ctrl.cursor_visible(True)
+
+# from aegis 
+from talon import ctrl, tap
+
+def on_move(typ, e):
+    # print(e)
+    buttons = ctrl.mouse_buttons_down()
+    if not e.flags & tap.DRAG and buttons:
+        # print("modifying")
+        e.flags |= tap.DRAG
+        e.button = buttons[0]
+        e.modify()
+
+tap.register(tap.MMOVE | tap.HOOK, on_move)

@@ -125,9 +125,9 @@ def insert_number(m):
     time.sleep(0.3)
     # press("cmd-g")
     Str(str(number))(None)
-    time.sleep(0.1)
-    Str(":p")(None)
-    press("enter")
+    # time.sleep(0.1)
+    # Str(":p")(None)
+    #  press("enter")
 
 # def cbv_push(m):
 #     number = utils.parse_words_as_integer(m._words[1:])
