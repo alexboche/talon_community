@@ -1,4 +1,8 @@
 # from talon.engine import engine
+# engine.register('', print)
+# added by aegis
+
+# from talon.engine import engine
 # from talon import ui, voice, tap
 # import os
 
