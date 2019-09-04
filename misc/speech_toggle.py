@@ -10,7 +10,10 @@ sleep_group = ContextGroup("sleepy")
 sleepy = Context("sleepy", group=sleep_group)
 
 dictation_group = ContextGroup("dictation")
-dictation = Context("dictation", group=dictation_group, func=lambda app, win : app.bundle in ["com.google.Chrome" ,"com.sublimetext.3" ,"texmaker", "org.lyx.lyx", "com.microsoft.Outlook"])
+# swap below to switch back to the old way
+dictation = Context("dictation", group=dictation_group, func=lambda app, win : app.bundle in ["com.microsoft.VSCode", "com.google.Chrome" ,"com.sublimetext.3" ,"texmaker", "org.lyx.lyx", "com.microsoft.Outlook"])
+# dictation = Context("dictation", func=lambda app, win : app.bundle in ["com.microsoft.VSCode", "com.google.Chrome" ,"com.sublimetext.3" ,"texmaker", "org.lyx.lyx", "com.microsoft.Outlook"])
+dictation.unload()  
 dictation_group.load()
 dictation_group.disable()
 
@@ -24,7 +27,6 @@ dictation_group.disable()
 #         repeater = Rep(repeat_count - 1)
 #         repeater.ctx = talon
 #         return repeater(None)
-
 
 ordinals = {}
 
@@ -82,7 +84,7 @@ def set_voice_type(type):
     global dictation_group
     if not dictation_enabled:
         dictation_group.disable()
-
+        dictation.unload()
     global engine
     if dragon_enabled:
         engine.mimic("wake up".split())
@@ -93,6 +95,7 @@ def set_voice_type(type):
         # Without postponing this "go to sleep" will be printed
         print("alex: dictation_enabled")
         dictation_group.enable()
+        dictation.load()
     
     # if type == 1:
         # engine.mimic("go to sleep".split())

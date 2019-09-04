@@ -3,6 +3,7 @@ import collections
 
 from talon import clip, resource
 from talon.voice import Context, Str, press, Key
+from . import vocab 
 from time import sleep
 import json
 import os
@@ -14,7 +15,12 @@ INCLUDE_TEENS_IN_NUMERALS = False
 INCLUDE_TENS_IN_NUMERALS = False
 
 # mapping = json.load(open(os.path.join(os.path.dirname(__file__), "replace_words.json")))
+
+#reloads json
+resource.read("vocab_alternate.json")
+
 mapping = json.load(resource.open("replace_words.json"))
+mapping.update({k.lower(): v for k, v in vocab.vocab_alternate.items()})
 mappings = collections.defaultdict(dict)
 for k, v in mapping.items():
     mappings[len(k.split(" "))][k] = v

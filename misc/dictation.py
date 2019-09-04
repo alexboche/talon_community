@@ -77,17 +77,20 @@ dictation.keymap({
     # "delta": [Key('cmd-m'), "\\delta "], 
     "(ace | space bar)": Key('space'),
     "lazer": "(",
-    "razer": ")",
+    # "razer": ")",
     "word <dgnwords>": lambda m: auto_format.insert_word(m.dgnwords[0][0]),
     "huge": auto_format.set_cap,
-    # "<dgndictation>": auto_format.phrase,
+    "<dgndictation>": auto_format.phrase,
 })
+ 
 
 from .speech_toggle import dictation_group
 
 
 from ..apps.lyx import greek_letters
+# swap below to switch back to the old way
 lyx_dictation = Context('lyx_dictation', bundle='org.lyx.lyx', group=dictation_group)
+# lyx_dictation = Context('lyx_dictation', bundle='org.lyx.lyx')
 # lyx_dictation = Context('lyx_dictation', bundle='com.microsoft.VSCode', group=dictation_group)
 # alphabet =  basic_keys.alphabet
 english_alphabet = alphabet
