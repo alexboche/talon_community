@@ -225,6 +225,8 @@ context.keymap(
         # Programming
         "double": " == ",
 
+        # Python
+        "import": "import ",
 
 
 
