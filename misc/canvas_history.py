@@ -13,7 +13,8 @@ class History:
         self.history = []
         engine.register('post:phrase', self.on_phrase_post)
         self.canvas = Canvas.from_screen(ui.main_screen())
-        # self.canvas = Canvas(0, 0, 640, 480, panel=True, draggable=True)
+        # self.canvas = Canvas(0, 0, 640, 480, draggable=True)
+        # self.canvas.set_draggable(True)
         self.canvas.register('draw', self.draw)
 
     def toggle_enabled(self):
@@ -28,7 +29,8 @@ class History:
         if cmd == 'p.end' and phrase:
             self.history.append(phrase)
             self.history = self.history[-hist_len:]
-            # self.canvas.freeze()
+            # prevent from rerendering
+            self.canvas.freeze()
 
     def draw(self, canvas):
         text = self.history[:]
@@ -42,13 +44,16 @@ class History:
         # canvas.draw_rect(ui.Rect(x - 50, y - 50, 100, 100))
         x = canvas.x + 20
         y = canvas.y + 50
+        # y = canvas.y + canvas.height - 50
         text_pad = 0
         rect_pad = 10
 
         # measure text
         width = 0
         text_top = y
+        # text_top = 0
         text_bot = y
+        # text_bot = 0
         line_spacing = 0
         for line in text:
             _, trect = paint.measure_text(line)
@@ -56,14 +61,17 @@ class History:
             line_spacing = max(line_spacing, trect.height)
             text_top = min(text_top, y - trect.height)
 
-        x = canvas.x + 1280 - 2*rect_pad - width
+        x = canvas.x + 1700 - 2*rect_pad - width # this the x coord. change 1700 to adjust.
+        # x = canvas.x + canvas.width - 2*rect_pad - width
 
         line_spacing += text_pad
         text_bot = y + (len(text) - 1) * line_spacing
         height = text_bot - text_top
 
         rect = ui.Rect(x - rect_pad, text_top - 2, width + rect_pad * 2, height + rect_pad + 2)
-        paint.color = 'ffffffbb'
+        
+        #  last two digits are hexadecimal for transparency. 
+        paint.color = 'ffffff44'
         paint.style = paint.Style.FILL
         canvas.draw_round_rect(rect, 10, 10)
 
@@ -72,6 +80,7 @@ class History:
         for line in text:
             canvas.draw_text(line, x, y)
             y += line_spacing
+            # y -= line_spacing consider this.
 
 history = History()
 
