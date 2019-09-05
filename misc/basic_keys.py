@@ -18,7 +18,7 @@ simple_keys = normalise_keys(
         "deli": "delete",
         "(ace | space)": "space",
         "(tabby)": "tab",
-        "( enter | shock )": "enter",
+        "( shock )": "enter",
         "( escape | cancel )": "escape",
         "(lairch)": "cmd-left",
         "pagedown": "pagedown",

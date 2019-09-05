@@ -158,7 +158,7 @@ context.keymap(
         "(end | rightmost) tab": Key("cmd-9"),
         "marco": Key("cmd-f"),
         "marneck": Key("cmd-g"),
-        "(last | prevous)": Key("cmd-shift-g"),
+        # "(last | prevous)": Key("cmd-shift-g"),
         "toggle dev tools": Key("cmd-alt-i"),
         "command menu": Key("cmd-shift-p"),
         "next panel": next_panel,
