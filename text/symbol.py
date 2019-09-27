@@ -4,7 +4,7 @@ ctx = Context("symbol")
 
 keymap = {
     # simple
-    "(question [mark] | questo)": "?",
+    "(questo)": "?",
     "plus": "+",
     "tilde": "~",
     "clamor": "!",

@@ -1,5 +1,5 @@
 from talon.voice import Context, Str
-from ..utils import alternatives
+# from ..utils import alternatives
 
 ctx = Context("shrink")
 
@@ -185,4 +185,4 @@ shrink_map = {
     "december": "dec",
 }
 
-ctx.keymap({"shrink" + alternatives(shrink_map.keys()): shrink_word})
+# ctx.keymap({"shrink" + alternatives(shrink_map.keys()): shrink_word})

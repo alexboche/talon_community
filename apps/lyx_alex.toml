@@ -123,6 +123,7 @@ models = "models"
 
 [non_braces.arrows]
 # does not require curly braces in latex
+arrow = "to"
 "left arrow" = "leftarrow"
 "right arrow" = "rightarrow"
 "up arrow" = "uparrow"
@@ -222,5 +223,5 @@ overline = "overline"
 
 [braces.misc_with_braces]
 # requires curly braces in latex.
-"root" = "sqrt"
+"square root" = "sqrt"
 "generic root" = "root"

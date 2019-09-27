@@ -14,6 +14,7 @@ ctx.keymap(
     {
 
         "cd population [ethics]": "cd /Users/alex/population/population_ethics",
+        "cd (package directory | ipython [directory] | virtual [environment] [directory])": "cd /Users/alex/.local/pipx/venvs/ipython/bin",
 
         # TODO: remove duplication between the two groups of commands as we really
         # only need one set of commands (eg by completing github issue #40 (use a

@@ -1,5 +1,6 @@
 from talon.voice import Context
-from talon import ui
+from talon import ui, ctrl
+from .mouse import delayed_click
 import time
 import os
 
@@ -56,11 +57,13 @@ ctx.keymap(
         "fox signal": lambda x: switch_app(x, "Signal"),
         "system preferences": lambda x: switch_app(x, "System Preferences"),
         "fox mail": lambda x: switch_app(x, "Outlook"),
+        # "focus Stat": [lambda m: ctrl.mouse_move(1184, 1052), lambda m: delayed_click],
+        "focus Stat": lambda m: ctrl.mouse_move(1184, 1052),
     }
 )
 
 # hardcoded_application_names = {"term": "iTerm2", "code": "code", "ack": "Acrobat Reader", "Lyx", "Lyx"}
-hardcoded_application_names = {"term": "iTerm2", "code": "code", "ack": "Acrobat Reader"}
+hardcoded_application_names = {"term": "iTerm2", "code": "code", "ack": "Acrobat Reader", "stat": "StataIC"}
 
 def update_lists():
     global running

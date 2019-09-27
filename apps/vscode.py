@@ -81,9 +81,9 @@ context.keymap(
         "master": Key("cmd-p"),
         # tabbing
         "stiffy": Key("cmd-alt-left"),
-        "(next tab | nexta)": Key("cmd-alt-right"),
+        "(next tab | nexta | nabber)": Key("cmd-alt-right"),
         "stippy": Key("cmd-alt-right"),
-        "(prexta | prior tab | untab)": Key("cmd-alt-left"),
+        "(prexta | prior tab | labber)": Key("cmd-alt-left"),
         "new tab": Key("cmd-n"),
         "jump" + optional_numerals: jump_tabs,
         "(recent | er) tab": Key('ctrl-tab'),
@@ -227,6 +227,10 @@ context.keymap(
 
         # Python
         "import": "import ",
+        "return": "return ",
+        "from": "from ",
+        "print": ["print()", Key('left')],
+        "lambda": ["lambda :", Key('left')],
 
 
 

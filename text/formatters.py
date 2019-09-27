@@ -66,7 +66,7 @@ surrounders = normalise_keys(
         # "(string)": (False, surround("'")),
         "(tics | glitch)": (False, surround("`")),
         "padded": (False, surround(" ")),
-        "dunder": (False, surround("__")),
+        "dunderscore": (False, surround("__")),
         "angle": (False, surround("<", ">")),
         "brax": (False, surround("[", "]")),
         "curly": (False, surround("{", "}")),
@@ -128,7 +128,7 @@ ctx.keymap(
         "(comma | ,) <dgndictation> [over]": [", ", spoken_text],
         "period <dgndictation> [over]": [". ", sentence_text],
         # "pounce <dgndictation>" : [text, Key('enter')],
-        "word <dgnwords>": word,
+        # "word <dgnwords>": word,
         "(%s)+ [<dgndictation>] [over]" % (" | ".join(formatters)): FormatText,
         # to match surrounder command + another command (i.e. not dgndictation)
         "(%s)+" % (" | ".join(surrounders)): FormatText,

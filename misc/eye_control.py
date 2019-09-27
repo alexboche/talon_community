@@ -5,7 +5,7 @@ ctx = Context('eye_control')
 ctx.keymap({
     'zoom mouse':      lambda m: eye_zoom_mouse.active.toggle(),
     'debug overlay':   lambda m: eye_mouse.debug_overlay.toggle(),
-    '(control mouse | mousy)':   lambda m: eye_mouse.control_mouse.toggle(),
+    '(control mouse | mousy | mage)':   lambda m: eye_mouse.control_mouse.toggle(),
     'camera overlay':  lambda m: eye_mouse.camera_overlay.toggle(),
     'run calibration': lambda m: eye_mouse.calib_start(),
 })

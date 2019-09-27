@@ -13,4 +13,4 @@ class NoiseModel:
             ctrl.mouse_click(button=0, hold=16000)
 
 
-model = NoiseModel()
+# model = NoiseModel()

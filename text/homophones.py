@@ -260,6 +260,8 @@ context.keymap(
         # "phones help": homophones_help,
         # "phones {basic_keys.digits}* {homophones.canonical}": raise_homophones,
         # "phones {basic_keys.digits}*": lambda m: raise_homophones(m, is_selection=True),
+
+        
         "force phones {homophones.canonical}": lambda m: raise_homophones(
             m, force_raise=True
         ),

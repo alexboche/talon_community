@@ -117,14 +117,14 @@ def reload_stuff(m):
 sleepy.keymap(
     {
         "reload stuff": reload_stuff,
-        "talon sleep": lambda m: set_voice_type(VoiceType.SLEEPING),
+        "(talon sleep | snore)": lambda m: set_voice_type(VoiceType.SLEEPING),
         "talon wake": lambda m: set_voice_type(last_voice_type),
         "dragon mode": lambda m: set_voice_type(VoiceType.DRAGON),
         "dictation mode": lambda m: set_voice_type(VoiceType.DICTATION),
         "priority mode": lambda m: set_voice_type(VoiceType.DICTATION_AND_COMMANDS),
         "talon mode": lambda m: set_voice_type(VoiceType.TALON),
-        "clear": Key('backspace'),
-        'space': Key('space'),
+        # "clear": Key('backspace'),
+        # 'space': Key('space'),
         # "triumph": Key('backspace'),
         
         # "(repeat | repple)" + utils.numerals: repeat,

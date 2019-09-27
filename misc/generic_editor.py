@@ -250,23 +250,24 @@ ctx.keymap(
         # "(select right | shrish | shin ross)": Key("shift-right"),
         "(shin ross)": Key("shift-right"),
         "(select word number {generic_editor.n}* above | wordpreev {generic_editor.n}*)": word_prev,
-        "big word preev {generic_editor.n}*": big_word_prev,
-        "big word neck {generic_editor.n}*": big_word_neck,
+        # "big word preev {generic_editor.n}*": big_word_prev,
+        # "big word neck {generic_editor.n}*": big_word_neck,
         "(select word number {generic_editor.n}* below | wordneck {generic_editor.n}*)": word_neck,
         "(select word left | scram | que lease)": Key("alt-shift-left"),
         "(select word right | scrish | que ross)": Key("alt-shift-right"),
-        "(select line left | lecksy | shin lairch)": Key("cmd-shift-left"),
-        "(select line right | recksy |  shin rairch )": Key("cmd-shift-right"),
+        "(select line left  | shin lairch)": Key("cmd-shift-left"),
+        "(select line right |  shin rairch )": Key("cmd-shift-right"),
         # "dev key": Key("left"),
         # "dynasty": [Key("left", Key("a")],
-        "dynasty": ["hello", "what", [Key('a')]*2],
+        # "dynasty": ["hello", "what", [Key('a')]*2],
         "tell {generic_editor.punct}": [Key('cmd-right'), tell_key, Key('enter')],
-        "recker": [Key('right'), ': '],
+        "reckart": [Key('right'), ': '],
         "roper":Key('cmd-right enter'),
      
         "copy all": [Key('cmd-a'), Key('cmd-c')],
         "cut all": [Key('cmd-a'), Key('cmd-x')],
         "select all": Key('cmd-a'),
+        "oscar": "o",
         
         "quotes": ['""', Key('left')],
         "curly": ['{}', Key('left')],
@@ -274,6 +275,7 @@ ctx.keymap(
         "(prekris)": ['()', Key('left')],
 
         # "airp":Key('a'),
+        # "ont": "o",
         
 
         

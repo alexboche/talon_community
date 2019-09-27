@@ -5,7 +5,7 @@ from .web import browser
 from ..misc import switcher
 # from ..misc import delayed_right_click 
 
-from talon import ui
+from talon import ui, ctrl
 from talon.voice import Context, Key, Str, press
 
 # It is recommended to use this script in tandem with Vimium, a Google Chrome plugin for controlling the browser via keyboard
@@ -141,8 +141,10 @@ def insert_number(m):
 
 context.keymap(
     {
+        "er tab": lambda m: ctrl.mouse_move(1686, 95),
         "(address bar | focus address | focus url | url | quick bar)": focus_address_bar,
-        "copy url": Key("escape y y"),
+        # "copy address": Key("escape y y"),
+        "copy address": Key('cmd-l cmd-c escape'),
         "go back": back,
         "go forward": forward,
         "page reload": Key("cmd-r"),
@@ -156,35 +158,35 @@ context.keymap(
         "((last | previous | preev) tab | labber)": Key("cmd-shift-["),
         "tab (1 | 2 | 3 | 4 | 5 | 6 | 7 | 8)": jump_tab,
         "(end | rightmost) tab": Key("cmd-9"),
-        "marco": Key("cmd-f"),
-        "marneck": Key("cmd-g"),
+        # "marco": Key("cmd-f"),
+        # "marneck": Key("cmd-g"),
         # "(last | prevous)": Key("cmd-shift-g"),
-        "toggle dev tools": Key("cmd-alt-i"),
-        "command menu": Key("cmd-shift-p"),
-        "next panel": next_panel,
-        "(last | previous) panel": last_panel,
-        "show application [panel]": lambda m: show_panel("Application"),
-        "show audit[s] [panel]": lambda m: show_panel("Audits"),
-        "show console [panel]": lambda m: show_panel("Console"),
-        "show element[s] [panel]": lambda m: show_panel("Elements"),
-        "show memory [panel]": lambda m: show_panel("Memory"),
-        "show network [panel]": lambda m: show_panel("Network"),
-        "show performance [panel]": lambda m: show_panel("Performance"),
-        "show security [panel]": lambda m: show_panel("Security"),
-        "show source[s] [panel]": lambda m: show_panel("Sources"),
+        # "toggle dev tools": Key("cmd-alt-i"),
+        # "command menu": Key("cmd-shift-p"),
+        # "next panel": next_panel,
+        # "(last | previous) panel": last_panel,
+        # "show application [panel]": lambda m: show_panel("Application"),
+        # "show audit[s] [panel]": lambda m: show_panel("Audits"),
+        # "show console [panel]": lambda m: show_panel("Console"),
+        # "show element[s] [panel]": lambda m: show_panel("Elements"),
+        # "show memory [panel]": lambda m: show_panel("Memory"),
+        # "show network [panel]": lambda m: show_panel("Network"),
+        # "show performance [panel]": lambda m: show_panel("Performance"),
+        # "show security [panel]": lambda m: show_panel("Security"),
+        # "show source[s] [panel]": lambda m: show_panel("Sources"),
         "(refocus | focus) page": refocus_page,
         "[refocus] dev tools": open_focus_devtools,
         # Clipboard
         "cut": Key("cmd-x"),
         "copy": Key("cmd-c"),
-        "paste": Key("cmd-v"),
+        # "paste": Key("cmd-v"),
         "paste same style": Key("cmd-alt-shift-v"),
         # "mendeley": Key("cmd-shift-m"),
         "(add | save) to mendeley": mendeley,
         # TODO: this should probably be specific to the page
-        "submit": Key("cmd-enter"),
+        # "submit": Key("cmd-enter"),
         # zotero
-        "zotero": Key("cmd-shift-z"),
+        # "zotero": Key("cmd-shift-z"),
         # rearrange tabs: https://chrome.google.com/webstore/detail/rearrange-tabs/ccnnhhnmpoffieppjjkhdakcoejcpbga
         # "move tab left": Key("ctrl-shift-left"),
         # "move tab right": Key("ctrl-shift-right"),
@@ -194,14 +196,14 @@ context.keymap(
         # "voice" + utils.optional_numerals: [Key('cmd-l'), time.sleep(0.2), insert_number],
         # "voice" + utils.optional_numerals: [Key('cmd-l'), insert_number],
         "voice" + utils.optional_numerals: [Key('cmd-shift-space'), insert_number, Key('enter')],
-        "push" + utils.optional_numerals: [Key('cmd-shift-space'), insert_number, ":", "p", Key('enter')],
+        # "push" + utils.optional_numerals: [Key('cmd-shift-space'), insert_number, ":", "p", Key('enter')],
         # "nab that": [delayed_right_click, Key('down'), Key('enter')],
         # "hide hints": [Key('cmd-shift-space'), ":-", Key('enter')],
         # "commander": [Key('a'), "b"], # why doesn't this command you anything?
         # "commerce": ["b", Key('a')],
         # vimium
         
-        "link": link,
+        # "link": link,
         "move tab left": browser.send_to_vimium("<<"),
         "move tab right": browser.send_to_vimium(">>"),
         "move tab new window": browser.send_to_vimium("W"),
