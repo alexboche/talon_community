@@ -5,15 +5,19 @@ from .lyx import insert
 ctx = Context("stata", bundle="com.stata.stata16")
 preword = {
     "variable": "variable",
-    "iffae": " if ",
+    "iffae": "if",
     
 }
 word = {
     "helper": "help",
-    "recode": "recode ",
-    "label": "label ",
-    "gener": "gen ",
+    "recode": "recode",
+    "label": "label",
+    "gener": "gen",
+    "values": "values",
+    
 }
+same_word=["list", "define", "display"]
+word.update({k:k for k in same_word})
 
 ctx.set_list("word", word)
 ctx.set_list("preword", preword)

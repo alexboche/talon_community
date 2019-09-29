@@ -11,7 +11,7 @@ sleepy = Context("sleepy", group=sleep_group)
 
 dictation_group = ContextGroup("dictation")
 # swap below to switch back to the old way
-dictation = Context("dictation", group=dictation_group, func=lambda app, win : app.bundle in ["com.microsoft.VSCode", "com.google.Chrome" ,"com.sublimetext.3" ,"texmaker", "org.lyx.lyx", "com.microsoft.Outlook"])
+dictation = Context("dictation", group=dictation_group, func=lambda app, win : app.bundle in ["com.google.Chrome" ,"com.sublimetext.3" ,"texmaker", "org.lyx.lyx", "com.microsoft.Outlook"])
 # dictation = Context("dictation", func=lambda app, win : app.bundle in ["com.microsoft.VSCode", "com.google.Chrome" ,"com.sublimetext.3" ,"texmaker", "org.lyx.lyx", "com.microsoft.Outlook"])
 dictation.unload()  
 dictation_group.load()

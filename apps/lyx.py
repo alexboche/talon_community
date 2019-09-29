@@ -1,5 +1,6 @@
 import toml
 from talon.voice import Key, Context, Str, press
+from ..misc.basic_keys import alphabet
 
 ctx = Context("lyx", bundle="org.lyx.lyx")
 # ctx = Context("lyx", bundle="com.google.Chrome")
@@ -28,6 +29,11 @@ def cap_symbol_letters(big, symbol):
 # const load the toml file
 with open("/Users/alex/.talon/user/talon_community/apps/lyx_alex.toml") as f:
         math_vocab = toml.load(f)
+# Get rid of the new line if you're not in lyx
+for braces_non_braces in math_vocab:
+    for category in math_vocab[braces_non_braces]:
+        for spec in math_vocab[braces_non_braces][category]:
+          math_vocab[braces_non_braces][category][spec] = "\\" + math_vocab[braces_non_braces][category][spec] + " " # Lyx only!!!
 
 # generate math vocabulary for symbols not requiring braces in latex
 non_braces_math_vocab = {}
@@ -45,6 +51,10 @@ for category in math_vocab["braces"]:
 lyx_math_vocab = non_braces_math_vocab.copy()
 for spec in braces_math_vocab:
     lyx_math_vocab[spec] = braces_math_vocab[spec]
+    # put a space after every lyx symbol
+# for spec in lyx_math_vocab:
+#     lyx_math_vocab[spec] += " "
+
 
 
 
@@ -53,11 +63,19 @@ numbers = {str(i): i for i in range(1, 101)}
 
 greek_letters = math_vocab["non_braces"]["greek"]
 math_fonts = math_vocab["braces"]["math_fonts"]
+lfunc = {"[put] section": "layout section", "subsection": "layout subsection"}
 ctx.set_list('a', numbers)
 ctx.set_list('b', numbers)
 ctx.set_list('symbol', lyx_math_vocab) 
 ctx.set_list('greek', greek_letters)
 ctx.set_list('math_fonts', math_fonts)
+ctx.set_list('lfunc', lfunc)
+english_greek_alphabet = alphabet.copy()
+english_greek_alphabet.update(greek_letters)
+ctx.set_list('full_alphabet1', english_greek_alphabet)
+ctx.set_list('full_alphabet2', english_greek_alphabet)
+lfunc_commands = {k:[Key('ctrl-x'), lfunc[k], Key('enter')] for k in lfunc.keys()}
+
 
 def matrix(m):
     Key('ctrl-x')
@@ -73,24 +91,29 @@ def lyx_insert(s):
 
 
 keymap = {
-    "greek {lyx.greek}": lambda m: insert(f"\\{greek_letters[m.greek[0]]} "),
-    "big greek {lyx.greek}": lambda m: insert(f"\\{greek_letters[m.greek[0]].title()} "),
-    "font {lyx.math_fonts}": lambda m: insert(f"\\{math_fonts[m.math_fonts[0]]} "), # note two different uses math_fonts here    
-    "mather": Key('cmd-m'),
-    # '[optional] bonfire': lambda m: insert(m._words[1]),
+    "greek {lyx.greek}": lambda m: insert(f"{greek_letters[m.greek[0]]}"),
+    "big greek {lyx.greek}": lambda m: insert(f"{greek_letters[m.greek[0]].title()}"),
+    "font {lyx.math_fonts}": lambda m: insert(f"{math_fonts[m.math_fonts[0]]}"), # note two different uses math_fonts here    
+    "(maird | mather)": 
+        Key('space cmd-m'),
+    "smath": Key('cmd-m'),
+    "{lyx.full_alphabet1} of {lyx.full_alphabet2}": 
+      lambda m: insert(f"{english_greek_alphabet[m.full_alphabet1[0]]}({english_greek_alphabet[m.full_alphabet2[0]]})"),
 
 
     # 'matrix {lyx.a} {lyx.b}':   lambda m: [Key('ctrl-x'), "math-matrix ", insert(numbers[m.a[0]]), " ", insert(numbers[m.b[0]]), Key('enter')],
     # 'matrix {lyx.a} by {lyx.b}':   lambda m: [insert(numbers[m.a[0]]), " ", insert(numbers[m.b[0]]), Key('enter')],
     'matrix {lyx.a} by {lyx.b}':   [Key('ctrl-x'), lambda m: insert(f"math-matrix {numbers[m.a[0]]} {numbers[m.b[0]]}\n")],
     "popper": Key('a space b'),
-    'matty': lambda m: matrix,
-    '{lyx.symbol}': [lambda m: insert(f"\\{lyx_math_vocab[m.symbol[0]]} ")],
-    'big {lyx.symbol}': [lambda m: insert(f"\\{lyx_math_vocab[m.symbol[0]].title()} ")],
+    
+    '{lyx.symbol}': [lambda m: insert(f"{lyx_math_vocab[m.symbol[0]]}")],
+    'put {lyx.symbol}': [Key('space cmd-m'), lambda m: insert(f"{lyx_math_vocab[m.symbol[0]]}"), Key('right space')],
+    'put big {lyx.symbol}': [Key('space cmd-m'), lambda m: insert(f"{lyx_math_vocab[m.symbol[0]].title()}"), Key('right space')],
+    'big {lyx.symbol}': [lambda m: insert(f"{lyx_math_vocab[m.symbol[0]].title()}")],
     # 'get {lyx.symbol}': [Key('space'), lambda m: insert(f"\\{lyx_math_vocab[m.symbol[0]]} "), Key('right')],
     # this one is working ('put' below)!
-    'put {lyx.symbol}': [Key('cmd-m'), lambda m: insert(f"\\{lyx_math_vocab[m.symbol[0]]} "), Key('right space')],
-    'put big {lyx.symbol}': [Key('cmd-m'), lambda m: insert(f"\\{lyx_math_vocab[m.symbol[0]].title()} "), Key('right space')],
+    'put {lyx.symbol}': [Key('cmd-m'), lambda m: insert(f"\\{lyx_math_vocab[m.symbol[0]]}"), Key('right space')],
+    'put big {lyx.symbol}': [Key('cmd-m'), lambda m: insert(f"\\{lyx_math_vocab[m.symbol[0]].title()}"), Key('right space')],
     
     'alex gamma': [Key('ctrl-m'), "\gamma "],
     'tester': lambda m: lyx_insert("gamma"), # this just types out gamma but does not press Key('cmd-m')
@@ -100,6 +123,13 @@ keymap = {
     # "matrix <m> by <n>": R(Key("a-x") + Text("math-matrix %(m)s %(n)s") + Key("enter")),
 
 
+    # Math macros
+    "inverse": ["^-1", Key('right')],
+    "squared": ["^2", Key('right')],
+    "cubed": ["^3", Key('right')],
+
+# LFuncs
+# "{lyx.lfunc}": [Key('ctrl-x'), lambda m: insert(f"{lfunc[m.lfunc[0]]}"), Key('enter')],
 # Environments
 "insert [numbered] equation": [Key('ctrl-x'),
      "command-sequence math-mode on; math-mutate equation;math-number-toggle", Key('enter')],
@@ -108,6 +138,12 @@ keymap = {
 "insert [numbered] multline": [Key('ctrl-x'),
      "command-sequence math-mode on; math-mutate multline;math-number-toggle", Key('enter')],
 "insert comment": [Key('ctrl-x'), "note-insert Comment", Key('enter')],
+"[put] section": Key('ctrl-p 2'),
+"[put] subsection": Key('ctrl-p 3'),
+"[put] subsubsection": Key('ctrl-p 4'),
+"enumerate": Key('ctrl-p e'),
+"itemize": Key('ctrl-p i'),
+
 
 
 # Non- math things
@@ -119,41 +155,7 @@ keymap = {
 
 # Math things
 
-	'secant line': "secant line",
 
-	'tangent line': "tangent line",
-
-
-	'smath': Key('cmd-m'),
-
-    'lambda': '\lambda ',
-
-    'insert lambdas': '\lambda_1, \lambda_2, ...,\lambda_n ',
-    'insert vectors vee': '\mathbf v _1 ,\mathbf v _2, ...,\mathbf v _n ',
-
-    'less [than or] equal': '\leq ',
-
-    'greater [than or] equal': '\geq ',
-    'not equal': '\\neq ',
-
-
-    'times': '\\times',
-
-    'square root': '\sqrt ',
-
-    'left arrow': '\leftarrow ',
-    'right arrow': '\\rightarrow ',
-
-    'union': '\cup ',
-    'intersect': '\cap ',
-    
-    'subset': '\subseteq ',
-    'proper subset': '\subset ',
-
-    'infinity': '\infty ',
-
-    'function plex': 'f(x)',
-    'function near': 'f(n)',
 
     'function prime': "f'(x)",
     'function double prime': "f''(x)",
@@ -177,12 +179,12 @@ keymap = {
     'limit (plex) (minus | negative) infinity': '\\lim_x\\rightarrow -\infty  ',
 
     'diff': '\\dfrac d',
-    'int': '\\int',
+    
 
-    'frac': '\\frac ',
-    'deefrac': '\\dfrac ', #display fraction, which is larger than frac
+    
+    
 
-    'nice frac': '\\nicefrac ',
+    
 
     'plus minus': '\pm ',
 
@@ -195,29 +197,7 @@ keymap = {
 
 # Logical and function notation
 
-    'wedge': '\\wedge ',
-    'exists': '\\exists ',
-    'for all': '\\forall ',
-    'implies': '\\implies ',
-
-    'if only if': '\iff ',
-
-    'compose': '\circ ',
     
-# Trig
-
-	'sine': '\sin ',
-	'cosine': '\cos ',
-	'tangent': '\tan ',
-	'secant': '\sec ',
-
-# Greek letters
-	'alpha': '\alpha ',
-	'theta': '\\theta ',
-	'pie': '\pi ',	
-	'gamma': '\\gamma ',
-	'delta': '\\delta ',
-    'big delta': '\\Delta ',
 	'epsilon': '\\varepsilon ',
 
 # Environment shortcuts
@@ -230,4 +210,7 @@ keymap = {
 
 }
 
+
+
+# keymap.update(lfunmsc_commands)
 ctx.keymap(keymap)

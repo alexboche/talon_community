@@ -253,8 +253,8 @@ ctx.keymap(
         # "big word preev {generic_editor.n}*": big_word_prev,
         # "big word neck {generic_editor.n}*": big_word_neck,
         "(select word number {generic_editor.n}* below | wordneck {generic_editor.n}*)": word_neck,
-        "(select word left | scram | que lease)": Key("alt-shift-left"),
-        "(select word right | scrish | que ross)": Key("alt-shift-right"),
+        "(select word left | scram | cute lease)": Key("alt-shift-left"),
+        "(select word right | scrish | cute ross)": Key("alt-shift-right"),
         "(select line left  | shin lairch)": Key("cmd-shift-left"),
         "(select line right |  shin rairch )": Key("cmd-shift-right"),
         # "dev key": Key("left"),
@@ -268,6 +268,7 @@ ctx.keymap(
         "cut all": [Key('cmd-a'), Key('cmd-x')],
         "select all": Key('cmd-a'),
         "oscar": "o",
+        "urp": "p",
         
         "quotes": ['""', Key('left')],
         "curly": ['{}', Key('left')],

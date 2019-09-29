@@ -36,6 +36,7 @@ class AutoFormat:
         self.space = False
 
     def insert_word(self, word):
+        print(word)
         word = str(word).lstrip("\\").split("\\", 1)[0]
         word = vocab.vocab_alternate.get(word, word) # what is going on here?
         word = mapping.get(word, word)
@@ -50,7 +51,7 @@ class AutoFormat:
         insert(word)
 
         self.caps = word in sentence_ends
-        self.space = "\n" not in word and word != "("
+        self.space = "\n" not in word and word not in set("(-")
 
     def phrase(self, m):
         for word in m.dgndictation[0]:
@@ -87,7 +88,7 @@ dictation.keymap({
 from .speech_toggle import dictation_group
 
 
-from ..apps.lyx import greek_letters
+from ..apps.lyx import greek_letters, math_vocab, english_greek_alphabet
 # swap below to switch back to the old way
 lyx_dictation = Context('lyx_dictation', bundle='org.lyx.lyx', group=dictation_group)
 # lyx_dictation = Context('lyx_dictation', bundle='org.lyx.lyx')
@@ -96,16 +97,30 @@ lyx_dictation = Context('lyx_dictation', bundle='org.lyx.lyx', group=dictation_g
 english_alphabet = alphabet
 lyx_dictation.set_list('alphabet', alphabet)
 lyx_dictation.set_list('greek', greek_letters)
+relations = math_vocab["non_braces"]["relations"]
+lyx_dictation.set_list('relations', relations)
+lyx_dictation.set_list('full_alphabet1', english_greek_alphabet)
+lyx_dictation.set_list('full_alphabet2', english_greek_alphabet)
+# lyx_dictation.set_list('math_vocab', math_vocab)
 lyx_dictation.keymap({
     "alex letter": [Key('cmd-m'), r"\epsilon "],
     "math {lyx_dictation.alphabet}": [" ", Key('cmd-m'), 
         lambda m: insert(f'{alphabet[m.alphabet[0]]}'), Key('right space')],
     "math big {lyx_dictation.alphabet}": [" ", Key('cmd-m'), 
         lambda m: insert(f'{alphabet[m.alphabet[0]].title()}'), Key('right space')],
+     "math {lyx_dictation.relations}": [" ", Key('cmd-m'), 
+        lambda m: insert(f'{relations[m.relations[0]]}'), Key('right space')],
+    "[math] {lyx_dictation.full_alphabet1} of {lyx_dictation.full_alphabet2}": 
+      [" ", Key('cmd-m'), 
+      lambda m: insert(f"{english_greek_alphabet[m.full_alphabet1[0]]}({english_greek_alphabet[m.full_alphabet2[0]]})"), 
+      Key('right space')],
+
+    # "math {lyx_dictation.math_vocab}": [" ", Key('cmd-m'), 
+    #     lambda m: insert(f'\\{math_vocab[m.math_vocab[0]]}'), Key('right space')],
     "math {lyx_dictation.greek}": [" ", Key('cmd-m'), 
-        lambda m: insert(f'\\{greek_letters[m.greek[0]]}'), Key('right space')],
+        lambda m: insert(f'{greek_letters[m.greek[0]]}'), Key('right space')],
     "math big {lyx_dictation.greek}": [" ", Key('cmd-m'), 
-        lambda m: insert(f'\\{greek_letters[m.greek[0]].title()}'), Key('right space')],
+        lambda m: insert(f'{greek_letters[m.greek[0]].title()}'), Key('right space')],
 
     
         

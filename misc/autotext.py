@@ -8,7 +8,7 @@ ctx.keymap(
     "excuse typos": "(Please excuse any typos/speakos, this message was typed by voice)",
     "northwestern e-mail": "alexander.boche@kellogg.northwestern.edu",
     "memail": "akboche@gmail.com",
-    "mumber": "3103839819",
+    "mumbero": "3103839819",
     "Boshay": "Boche",
     "E G": "e.g. ",
     "mcmanus [address]": "1725 Orrington Ave #107",

@@ -10,6 +10,7 @@ keymap = {"color box": ["\\colorbox{gray}{}", Key('left')],
 "labeler": ["\\label{}", Key('left')],
 "quader": "\\quad ",
 "enspacer":"\\enspace",
+"dollz": ["$$", Key('left')],
 }
 
 latex_ctx.keymap(keymap)
