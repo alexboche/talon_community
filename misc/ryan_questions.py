@@ -87,21 +87,30 @@ def get_location_url():
     return path
 
 def save_goto(m):
-    print(m)
+    # print(m)
+    print(("starting function"))
     name = ' '.join(m.dgndictation[0])
+    print(("print statement 2"))
+
     try:
         location = get_location_url()
     except Exception as e:
         notify('Save failed', body=str(e))
+        print(("exception"))
         return
-
-    
+        
     app = ui.active_app()
+
+    print(app)
+    print(("print statement 3"))
     if app.name in ('Safari', 'Google Chrome', 'Firefox'):
+        print("browser")
+        
         go_site[name] = location
         resource.write('go_site.json', json.dumps(go_site))
         notify(f'Saved "{name}"', body=location)
-    if app == "Finder":
+    if app.name == "Finder":
+        print("finder")
         go_dir[name] = location
         resource.write('go_dir.json', json.dumps(go_dir))
         notify(f'Saved "{name}"', body=location)
