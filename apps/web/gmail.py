@@ -127,6 +127,8 @@ ctx.keymap(
         # "mark as important": send_key_to_page("+"),
         "mark as important": send_key_to_page("="),
         "mark as not important": send_key_to_page("-"),
+        "mark as read": send_key_to_page('shift-i'),
+        "mark as unread": send_key_to_page('shift-u'),
         "snooze": send_key_to_page("b"),
         "expand entire conversation": send_key_to_page(";"),
         "collapse entire conversation": send_key_to_page(":"),

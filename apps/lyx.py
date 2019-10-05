@@ -29,7 +29,9 @@ def cap_symbol_letters(big, symbol):
 # const load the toml file
 with open("/Users/alex/.talon/user/talon_community/apps/lyx_alex.toml") as f:
         math_vocab = toml.load(f)
-# Get rid of the new line if you're not in lyx
+# for spec in math_vocab["non_braces"]["relations"]:
+    # math_vocab["non_braces"]["relations"][spec] = "rel" + math_vocab["non_braces"]["relations"][spec]
+# Get rid of the next line if you're not in lyx
 for braces_non_braces in math_vocab:
     for category in math_vocab[braces_non_braces]:
         for spec in math_vocab[braces_non_braces][category]:
@@ -70,10 +72,10 @@ ctx.set_list('symbol', lyx_math_vocab)
 ctx.set_list('greek', greek_letters)
 ctx.set_list('math_fonts', math_fonts)
 ctx.set_list('lfunc', lfunc)
-english_greek_alphabet = alphabet.copy()
-english_greek_alphabet.update(greek_letters)
-ctx.set_list('full_alphabet1', english_greek_alphabet)
-ctx.set_list('full_alphabet2', english_greek_alphabet)
+eg_alph = alphabet.copy()
+eg_alph.update(greek_letters)
+ctx.set_list('eg_alph1', eg_alph) # eg = english greek
+ctx.set_list('eg_alph2', eg_alph)
 lfunc_commands = {k:[Key('ctrl-x'), lfunc[k], Key('enter')] for k in lfunc.keys()}
 
 
@@ -91,22 +93,25 @@ def lyx_insert(s):
 
 
 keymap = {
+    "opt lease": Key('alt-left'),
+    "opt ross": Key('alt-right'),
     "greek {lyx.greek}": lambda m: insert(f"{greek_letters[m.greek[0]]}"),
     "big greek {lyx.greek}": lambda m: insert(f"{greek_letters[m.greek[0]].title()}"),
     "font {lyx.math_fonts}": lambda m: insert(f"{math_fonts[m.math_fonts[0]]}"), # note two different uses math_fonts here    
-    "(maird | mather)": 
+    "(maird)": 
         Key('space cmd-m'),
     "smath": Key('cmd-m'),
-    "{lyx.full_alphabet1} of {lyx.full_alphabet2}": 
-      lambda m: insert(f"{english_greek_alphabet[m.full_alphabet1[0]]}({english_greek_alphabet[m.full_alphabet2[0]]})"),
+    # "{lyx.full_alphabet1} of {lyx.full_alphabet2}": 
+    #   lambda m: insert(f"{eg_alph[m.eg_alph1[0]]}({eg_alph[m.eg_alph2[0]]})"),
+    "of {lyx.eg_alph1}": lambda m: insert(f"({eg_alph[m.eg_alph1[0]]})"),
+    "sub {lyx.eg_alph1}": ["_", lambda m: insert(f"{eg_alph[m.eg_alph1[0]]}"), Key('right')],
 
-
-    # 'matrix {lyx.a} {lyx.b}':   lambda m: [Key('ctrl-x'), "math-matrix ", insert(numbers[m.a[0]]), " ", insert(numbers[m.b[0]]), Key('enter')],
-    # 'matrix {lyx.a} by {lyx.b}':   lambda m: [insert(numbers[m.a[0]]), " ", insert(numbers[m.b[0]]), Key('enter')],
+    
+    
     'matrix {lyx.a} by {lyx.b}':   [Key('ctrl-x'), lambda m: insert(f"math-matrix {numbers[m.a[0]]} {numbers[m.b[0]]}\n")],
     "popper": Key('a space b'),
     
-    '{lyx.symbol}': [lambda m: insert(f"{lyx_math_vocab[m.symbol[0]]}")],
+    'bowl {lyx.symbol}': [lambda m: insert(f"{lyx_math_vocab[m.symbol[0]]}")],
     'put {lyx.symbol}': [Key('space cmd-m'), lambda m: insert(f"{lyx_math_vocab[m.symbol[0]]}"), Key('right space')],
     'put big {lyx.symbol}': [Key('space cmd-m'), lambda m: insert(f"{lyx_math_vocab[m.symbol[0]].title()}"), Key('right space')],
     'big {lyx.symbol}': [lambda m: insert(f"{lyx_math_vocab[m.symbol[0]].title()}")],
@@ -127,12 +132,15 @@ keymap = {
     "inverse": ["^-1", Key('right')],
     "squared": ["^2", Key('right')],
     "cubed": ["^3", Key('right')],
+    "reals": ["\\mathbb R", Key('right')],
+    "alpha": "\\alpha ",
 
 # LFuncs
 # "{lyx.lfunc}": [Key('ctrl-x'), lambda m: insert(f"{lfunc[m.lfunc[0]]}"), Key('enter')],
 # Environments
-"insert [numbered] equation": [Key('ctrl-x'),
-     "command-sequence math-mode on; math-mutate equation;math-number-toggle", Key('enter')],
+"insert [numbered] equation": Key('cmd-shift-k'),
+# [Key('ctrl-x'),
+    #  "command-sequence math-mode on; math-mutate equation;math-number-toggle", Key('enter')],
 "insert [numbered] align": [Key('ctrl-x'),
      "command-sequence math-mode on; math-mutate align;math-number-toggle", Key('enter')],
 "insert [numbered] multline": [Key('ctrl-x'),

@@ -261,22 +261,24 @@ ctx.keymap(
         # "dynasty": [Key("left", Key("a")],
         # "dynasty": ["hello", "what", [Key('a')]*2],
         "tell {generic_editor.punct}": [Key('cmd-right'), tell_key, Key('enter')],
-        "reckart": [Key('right'), ': '],
+        # "reckart": [Key('right'), ': '],
         "roper":Key('cmd-right enter'),
      
         "copy all": [Key('cmd-a'), Key('cmd-c')],
         "cut all": [Key('cmd-a'), Key('cmd-x')],
         "select all": Key('cmd-a'),
-        "oscar": "o",
-        "urp": "p",
+        # "oscar": "o",
+        # "urp": "p",
         
         "quotes": ['""', Key('left')],
         "curly": ['{}', Key('left')],
         "brax": ['[]', Key('left')],
         "(prekris)": ['()', Key('left')],
+        "peer": ".",
 
         # "airp":Key('a'),
         # "ont": "o",
+        # "unk": "u",
         
 
         

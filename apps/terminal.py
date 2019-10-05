@@ -49,12 +49,15 @@ directory_shortcuts = {
     "talon plug-ins": TALON_PLUGINS,
     "talon community": "~/.talon/user/talon_community",
 }
-directory_shortcuts.update(load_config_json("directory_shortcuts.json"))
+# directory_shortcuts.update(load_config_json("directory_shortcuts.json"))
+# this json file my not work because the directories begin with "file//"
+directory_shortcuts.update(load_config_json("/Users/alex/.talon/user/talon_community/misc/go_dir.json"))
 
 
 def cd_directory_shortcut(m):
     directory = directory_shortcuts[m[1]]
-    insert(f"cd {directory}; ls")
+    # insert(f"cd {directory}; ls")
+    insert(f"cd {directory}")
     for _ in range(4):
         press("left")
 
@@ -93,6 +96,12 @@ def new_server(m):
 
 
 keymap = {
+    "flash": "flash ",
+    "flash add math": "flash add math",
+    "flash add thoughts": "flash add thoughts",
+    "flash view thoughts": "flash view thoughts",
+    "flash view math": "flash view math",
+    
     "shell Whereami": "pwd ",
     "shell home": "~/",
     "lefty": Key("ctrl-a"),
@@ -127,8 +136,8 @@ keymap = {
     ],
     "cd {terminal.directory_shortcuts}": cd_directory_shortcut,
     "directory {terminal.directory_shortcuts}": name_directory_shortcuts,
-    "(ls | run ellis | run alice)": "ls\n",
-    "(la | run la)": "ls -la\n",
+    # "(ls | run ellis | run alice)": "ls\n",
+    # "(la | run la)": "ls -la\n",
     # "durrup": "cd ..; ls\n",
     "go back": "cd -\n",
     "dash <dgndictation> [over]": dash,

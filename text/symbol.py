@@ -10,7 +10,7 @@ keymap = {
     "clamor": "!",
     "(dolly)": "$",
     "score": "_",
-    "(deckle | devon)": ":",
+    "(deckle)": ":",
     "lazer": "(",
     "(razer)": ")",
     "(left curl)": "{",

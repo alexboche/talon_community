@@ -32,11 +32,12 @@ class AutoFormat:
         ui.register("win_focus", lambda win: self.reset())
 
     def reset(self):
-        self.caps = True
+        # self.caps = True
+        self.caps = False
         self.space = False
 
     def insert_word(self, word):
-        print(word)
+        # print(word)ee
         word = str(word).lstrip("\\").split("\\", 1)[0]
         word = vocab.vocab_alternate.get(word, word) # what is going on here?
         word = mapping.get(word, word)
@@ -49,8 +50,10 @@ class AutoFormat:
             insert(" ")
 
         insert(word)
+        # self.set_nocaps()
+        self.caps=False
 
-        self.caps = word in sentence_ends
+        # self.caps = word in sentence_ends
         self.space = "\n" not in word and word not in set("(-")
 
     def phrase(self, m):
@@ -59,6 +62,8 @@ class AutoFormat:
     
     def set_cap(self, m):
         self.caps = True
+    def set_nocaps(self, m):
+        self.caps = False
     
 
 
@@ -81,6 +86,7 @@ dictation.keymap({
     # "razer": ")",
     "word <dgnwords>": lambda m: auto_format.insert_word(m.dgnwords[0][0]),
     "huge": auto_format.set_cap,
+    "no caps": auto_format.set_nocaps, # why doesn't this work?
     "<dgndictation>": auto_format.phrase,
 })
  
@@ -88,7 +94,7 @@ dictation.keymap({
 from .speech_toggle import dictation_group
 
 
-from ..apps.lyx import greek_letters, math_vocab, english_greek_alphabet
+from ..apps.lyx import greek_letters, math_vocab, eg_alph
 # swap below to switch back to the old way
 lyx_dictation = Context('lyx_dictation', bundle='org.lyx.lyx', group=dictation_group)
 # lyx_dictation = Context('lyx_dictation', bundle='org.lyx.lyx')
@@ -99,8 +105,8 @@ lyx_dictation.set_list('alphabet', alphabet)
 lyx_dictation.set_list('greek', greek_letters)
 relations = math_vocab["non_braces"]["relations"]
 lyx_dictation.set_list('relations', relations)
-lyx_dictation.set_list('full_alphabet1', english_greek_alphabet)
-lyx_dictation.set_list('full_alphabet2', english_greek_alphabet)
+lyx_dictation.set_list('eg_alph1', eg_alph)
+lyx_dictation.set_list('eg_alph2', eg_alph)
 # lyx_dictation.set_list('math_vocab', math_vocab)
 lyx_dictation.keymap({
     "alex letter": [Key('cmd-m'), r"\epsilon "],
@@ -110,9 +116,10 @@ lyx_dictation.keymap({
         lambda m: insert(f'{alphabet[m.alphabet[0]].title()}'), Key('right space')],
      "math {lyx_dictation.relations}": [" ", Key('cmd-m'), 
         lambda m: insert(f'{relations[m.relations[0]]}'), Key('right space')],
-    "[math] {lyx_dictation.full_alphabet1} of {lyx_dictation.full_alphabet2}": 
+    "math {lyx_dictation.eg_alph1} of {lyx_dictation.eg_alph2}": 
       [" ", Key('cmd-m'), 
-      lambda m: insert(f"{english_greek_alphabet[m.full_alphabet1[0]]}({english_greek_alphabet[m.full_alphabet2[0]]})"), 
+      lambda m: 
+      insert(f"{eg_alph[m.eg_alph1[0]]}({eg_alph[m.eg_alph1[0]]})"), 
       Key('right space')],
 
     # "math {lyx_dictation.math_vocab}": [" ", Key('cmd-m'), 

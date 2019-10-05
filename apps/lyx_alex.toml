@@ -31,7 +31,7 @@ omega = "omega"
 times = "times"
 divide = "div"
 stop = "cdot"
-union = "cup"
+uni = "cup"
 intersect = "cap"
 inter = "cap"
 "(direct sum)" = "oplus"
@@ -42,7 +42,7 @@ inter = "cap"
 "starboard" = "star"
 "cirky" = "circ"
 "bullet" = "bullet"
-"applis" = "uplus"
+"applisto" = "uplus"
 "set minus" = "setminus"
 
 
@@ -71,15 +71,15 @@ limit = "lim"
 liminf = "liminf"
 LN = "ln"
 log = "log"
-max = "max"
-min = "min"
+maxer = "max"
+minner = "min"
 secant = "sec"
-sine = "sin"
-sinch = "sinh"
+siner = "sin"
+sincher = "sinh"
 supremum = "sup"
 tangent = "tan"
-tanch = "tanh"
-prob = "Pr"
+tancher = "tanh"
+probber = "Pr"
 
 [non_braces.relations]
 # does not require curly braces in latex
@@ -88,7 +88,7 @@ superset = "supset"
 "strict subset" = "subsetneq"
 "strict superset" = "supsetneq"
 preck = "prec"
-"preck equals" = "preceq"
+"preckual" = "preceq"
 suck = "succ"
 "suck equals" = "succeq"
 "indifferent" = "sim"
@@ -114,9 +114,9 @@ memby = "in"
 "logic or" = "lor"
 primmer = "prime"
 "logic not" = "lnot"
-"for all" = "forall"
-"there exists" = "exists"
-"proves" = "vdash"
+"universal" = "forall"
+"existential" = "exists"
+"proves sign" = "vdash"
 models = "models"
 "negation" = "neg"
 
@@ -144,6 +144,7 @@ longdots = "ldots"
 
 
 [non_braces.misc]
+"null set" = "empty set"
 partial = "partial"
 infinity = "infty"
 aleph = "aleph"
@@ -156,6 +157,10 @@ truthy = "top"
 falsy = "bot"
 gradient = "nabla"
 text = "text"
+# braces.misc 
+"square root" = "sqrt"
+"generic root" = "root"
+
 
 
 
@@ -186,6 +191,7 @@ unit = "unitone"
 "unit fraction " = "unitfrac"
 "text fraction" = "tfrac"
 "display fraction" = "dfrac"
+"display frack" = "dfrac"
 "continued fraction" = "cfrac"
 "continued fraction (left)" = "cfracleft"
 "continued fraction (right)" = "cfracright"
@@ -215,14 +221,12 @@ check = "check"
 grave = "grave"
 vector = "vector"
 tilde = "tilde"
-
-[braces.multi_accents]
+#[braces.multi_accents]
 overline = "overline"
+"under line" = "underline"
 "over right arrow" = "overrightarrow"
 
 
 
 [braces.misc_with_braces]
 # requires curly braces in latex.
-"square root" = "sqrt"
-"generic root" = "root"

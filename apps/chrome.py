@@ -98,7 +98,8 @@ def mendeley(m):
     navigate_to_url(f"https://www.mendeley.com/import/?url={get_url()}")
 
 
-webpages = utils.load_config_json("webpages.json")
+# webpages = utils.load_config_json("webpages.json")
+webpages = utils.load_config_json("/Users/alex/.talon/user/talon_community/misc/go_site.json")
 
 
 def get_webpage(m):

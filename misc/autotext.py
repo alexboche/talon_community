@@ -9,7 +9,7 @@ ctx.keymap(
     "northwestern e-mail": "alexander.boche@kellogg.northwestern.edu",
     "memail": "akboche@gmail.com",
     "mumbero": "3103839819",
-    "Boshay": "Boche",
+    "bohshintor": "Boche",
     "E G": "e.g. ",
     "mcmanus [address]": "1725 Orrington Ave #107",
     # "new line": "\n",
