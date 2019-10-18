@@ -14,7 +14,7 @@ simple_keys = normalise_keys(
         "ross": "right",
         "sauce": "up",
         "(dunce)": "down",
-        "(backspace | clear)": "backspace",
+        "( clear)": "backspace",
         "deli": "delete",
         "(ace | space)": "space",
         "(tabby)": "tab",
@@ -35,7 +35,7 @@ symbols = normalise_keys(
         # ``text/symbol.py``.
         "(ticky | back tick)": "`",
         "(comma | ,)": ",",
-        "(donker | dope | period|drake)": ".",
+        "(peer|period)": ".",
         "(semicolon | semper)": ";",
         "(single quote | quatchet)": "'",
         "(lacky | left square bracket)": "[",
@@ -123,7 +123,7 @@ def press_keys(m):
 ctx = Context("basic_keys")
 ctx.keymap(
     {
-        "(uppercase) {basic_keys.alphabet}+ [(lowercase | sunk)]": uppercase_letters,
+        "(uppercase | upper) {basic_keys.alphabet}+ [(lowercase | sunk)]": uppercase_letters,
         "(big) {basic_keys.alphabet} [(lowercase | sunk)]": uppercase_letters,
         "{basic_keys.modifiers}* {basic_keys.alphabet}+": press_keys,
         "({basic_keys.modifiers}+ | num) {basic_keys.digits}+": press_keys,

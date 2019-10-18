@@ -12,6 +12,26 @@ A few reasons to use ordinals:
 """
 from talon.voice import Context, Rep, talon
 
+class Rep:
+    def __init__(self, data):
+        self.data = data
+
+    def __call__(self, m):
+        if self.ctx.last_action:
+            for i in range(self.data):
+                for action, rule in self.ctx.last_action:
+                    # special case basic_keys to only repeat the last key
+                    if rule._name.startswith('keymap__basic_keys'):
+                        keyed = [rule._keyed[-1]]
+                        for key, s in reversed(rule._keyed[:-1]):
+                            if key != 'basic_keys.modifiers':
+                                break
+                            keyed.append((key, s))
+                        rule._data = tuple([s for k, s in keyed])
+                        rule._keyed = tuple(reversed(keyed))
+                    action(rule)
+        return self.ctx.last_action
+
 ctx = Context("repeater")
 
 ordinals = {}
